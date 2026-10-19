@@ -1,0 +1,123 @@
+/* ==========================================================================
+   Base: reset, typography scale, utility helpers
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  color: var(--on-surface);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+::selection { background: var(--primary-container); color: var(--on-primary-fixed); }
+::-webkit-scrollbar { width: 0; height: 0; }
+
+h1, h2, h3, h4, h5, h6, p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+input, select, textarea { font: inherit; color: inherit; }
+img, svg { display: block; max-width: 100%; }
+table { border-collapse: collapse; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+:focus-visible { outline: 2px solid var(--vip); outline-offset: 2px; }
+
+/* Material Symbols */
+.icon {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  user-select: none;
+  flex-shrink: 0;
+}
+.icon--fill { font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24; }
+.icon-14 { font-size: 14px; } .icon-15 { font-size: 15px; } .icon-16 { font-size: 16px; }
+.icon-18 { font-size: 18px; } .icon-20 { font-size: 20px; } .icon-22 { font-size: 22px; }
+.icon-24 { font-size: 24px; } .icon-26 { font-size: 26px; } .icon-32 { font-size: 32px; }
+
+/* ---------- Typography scale ---------- */
+.t-headline-xl { font-size: 32px; line-height: 40px; letter-spacing: -0.02em; font-weight: 700; }
+.t-headline-lg { font-size: 24px; line-height: 32px; letter-spacing: -0.015em; font-weight: 600; }
+.t-headline-md { font-size: 18px; line-height: 24px; letter-spacing: -0.01em; font-weight: 600; }
+.t-headline-sm { font-size: 15px; line-height: 20px; letter-spacing: 0; font-weight: 600; }
+.t-body-lg { font-size: 16px; line-height: 24px; font-weight: 400; }
+.t-body-md { font-size: 14px; line-height: 20px; font-weight: 400; }
+.t-body-sm { font-size: 12px; line-height: 16px; letter-spacing: 0.01em; font-weight: 400; }
+.t-label-lg { font-size: 14px; line-height: 20px; letter-spacing: 0.01em; font-weight: 500; }
+.t-label-md { font-size: 12px; line-height: 16px; letter-spacing: 0.02em; font-weight: 500; }
+.t-label-sm { font-size: 11px; line-height: 14px; letter-spacing: 0.04em; font-weight: 600; }
+.t-data { font-size: 13px; line-height: 18px; font-weight: 500; }
+
+@media (max-width: 767px) {
+  .t-headline-xl { font-size: 24px; line-height: 32px; letter-spacing: -0.01em; }
+  .t-headline-lg { font-size: 20px; line-height: 28px; letter-spacing: -0.01em; }
+}
+
+/* Tabular figures cho mọi số liệu tài chính */
+.num, .t-data, td, th { font-feature-settings: "tnum" 1, "cv05" 1, "zero" 1; font-variant-numeric: tabular-nums; }
+
+.upper { text-transform: uppercase; }
+.tracking-wide { letter-spacing: 0.05em; }
+.tracking-widest { letter-spacing: 0.1em; }
+.fw-500 { font-weight: 500; } .fw-600 { font-weight: 600; }
+.fw-700 { font-weight: 700; } .fw-800 { font-weight: 800; }
+.text-right { text-align: right; } .text-center { text-align: center; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ---------- Colors ---------- */
+.c-on-surface { color: var(--on-surface); }
+.c-muted { color: var(--on-surface-variant); }
+.c-outline { color: var(--outline); }
+.c-primary { color: var(--primary); }
+.c-vip { color: var(--primary-container); }
+.c-secondary, .c-up { color: var(--secondary); }
+.c-error, .c-down { color: var(--error); }
+.c-tertiary { color: var(--tertiary); }
+
+/* ---------- Layout helpers ---------- */
+.container { width: 100%; max-width: var(--container-max); margin-inline: auto; }
+.section { width: 100%; padding-inline: var(--margin-desktop); }
+.flex { display: flex; } .inline-flex { display: inline-flex; }
+.col { flex-direction: column; }
+.wrap { flex-wrap: wrap; }
+.items-center { align-items: center; } .items-start { align-items: flex-start; } .items-end { align-items: flex-end; }
+.justify-between { justify-content: space-between; } .justify-center { justify-content: center; } .justify-end { justify-content: flex-end; }
+.flex-1 { flex: 1 1 0%; min-width: 0; } .shrink-0 { flex-shrink: 0; }
+.gap-xs { gap: var(--space-xs); } .gap-sm { gap: var(--space-sm); } .gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); } .gap-xl { gap: var(--space-xl); }
+.w-full { width: 100%; }
+.relative { position: relative; }
+.hidden { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+@media (max-width: 639px)  { .hide-xs { display: none !important; } }
+@media (max-width: 767px)  { .hide-sm { display: none !important; } }
+@media (max-width: 1023px) { .hide-md { display: none !important; } }
+@media (max-width: 1279px) { .hide-lg { display: none !important; } }
+
+@keyframes pulse { 50% { opacity: 0.45; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes flash-up { 0% { background: rgba(16, 185, 129, 0.22); } 100% { background: transparent; } }
+@keyframes flash-down { 0% { background: rgba(239, 68, 68, 0.22); } 100% { background: transparent; } }
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.flash-up { animation: flash-up 0.8s ease-out; }
+.flash-down { animation: flash-down 0.8s ease-out; }

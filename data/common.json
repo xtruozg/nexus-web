@@ -1,0 +1,73 @@
+{
+  "brand": { "name": "NEXUS", "sub": "EXCHANGE", "footerName": "NEXUS FINANCE" },
+  "user": {
+    "email": "trader@nexus.finance",
+    "displayName": "Trần Bảo Nam",
+    "uid": "8892410",
+    "vipLevel": 3,
+    "vipName": "Bạc",
+    "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuA99ggvHnMDMRsgNFTWUzpYsSRCgNWOhK6ap7-LdG32XwR0fflQCc3MwrroBLBt9IQextEnVwjR33Sc2TssBHQSOovibaGsFlPu5-6XVpBqEUqtovf5SpDB0lJV4gjE8EZjn3rYek1vKklX0wkCxeJx5k7RK5rYUGeXT1u_EamibyDrpmNvIkTZtRX2j0IotH0IzNySoms-WzKy8EwULeExlfB0qYXdpxfEoxEhDGyIIWYMebI20RGm"
+  },
+  "routes": {
+    "markets": "index.html",
+    "trade": "trade.html",
+    "vip-tiers": "index.html#vip",
+    "projects": "#",
+    "about-us": "#",
+    "deposit": "wallet.html",
+    "wallet": "wallet.html",
+    "history": "history.html",
+    "profile-settings": "profile.html",
+    "register": "register.html",
+    "login": "register.html"
+  },
+  "mainNav": [
+    { "key": "markets", "label": "Thị trường" },
+    { "key": "trade", "label": "Giao dịch" },
+    { "key": "vip-tiers", "label": "Cấp độ VIP" },
+    { "key": "projects", "label": "Dự án" },
+    { "key": "about-us", "label": "Giới thiệu" }
+  ],
+  "mainNavByPage": {
+    "history": [
+      { "key": "markets", "label": "Thị trường" },
+      { "key": "trade", "label": "Giao dịch" },
+      { "key": "vip-tiers", "label": "Cấp độ VIP" },
+      { "key": "wallet", "label": "Ví" },
+      { "key": "history", "label": "Lịch sử & Sao kê" },
+      { "key": "projects", "label": "Dự án" }
+    ]
+  },
+  "mobileNav": [
+    { "key": "markets", "label": "Trang chủ", "icon": "home" },
+    { "key": "about-us", "label": "Giới thiệu", "icon": "info" },
+    { "key": "trade", "label": "Giao dịch", "icon": "swap_horiz", "fab": true },
+    { "key": "projects", "label": "Dự án", "icon": "rocket_launch" },
+    { "key": "profile-settings", "label": "Thông tin", "icon": "shield_person", "dockIcon": "account_circle" }
+  ],
+  "userMenu": [
+    { "key": "profile-settings", "label": "Hồ sơ & Bảo mật", "icon": "person" },
+    { "key": "wallet", "label": "Ví & Nạp rút", "icon": "account_balance_wallet" },
+    { "key": "history", "label": "Lịch sử & Báo cáo thuế", "icon": "receipt_long" },
+    { "key": "vip-tiers", "label": "Đặc quyền VIP", "icon": "workspace_premium", "accent": true },
+    { "key": "login", "label": "Đăng xuất", "icon": "logout", "danger": true }
+  ],
+  "languages": [
+    { "code": "VN", "flag": "🇻🇳", "label": "Tiếng Việt" },
+    { "code": "EN", "flag": "🇺🇸", "label": "English" },
+    { "code": "DE", "flag": "🇩🇪", "label": "Deutsch" },
+    { "code": "ES", "flag": "🇪🇸", "label": "Español" },
+    { "code": "FR", "flag": "🇫🇷", "label": "Français" },
+    { "code": "CN", "flag": "🇨🇳", "label": "中文" },
+    { "code": "JP", "flag": "🇯🇵", "label": "日本語" }
+  ],
+  "footer": {
+    "copyright": "© 2024 Nexus Financial Markets Ltd. Mọi quyền được bảo lưu.",
+    "links": [
+      { "label": "Về chúng tôi", "key": "about-us" },
+      { "label": "Phí & Biểu giá VIP", "key": "vip-tiers" },
+      { "label": "Điều khoản dịch vụ", "href": "#" },
+      { "label": "Bảo mật & Quỹ SAFU", "href": "#" }
+    ]
+  }
+}

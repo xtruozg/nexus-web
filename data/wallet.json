@@ -1,0 +1,122 @@
+{
+  "usdVnd": 25460.10363,
+  "overview": {
+    "label": "Tổng giá trị tài sản ròng ước tính",
+    "totalUsd": 48250.00,
+    "change24hUsd": 1420.50,
+    "change24hPct": 2.98,
+    "allocation": [
+      { "key": "spot", "label": "Spot", "pct": 65, "color": "primary" },
+      { "key": "futures", "label": "Futures", "pct": 28, "color": "secondary" },
+      { "key": "earn", "label": "Earn", "pct": 7, "color": "primary-fixed-dim" }
+    ]
+  },
+  "limits": {
+    "daily24hUsd": 500000,
+    "usedUsd": 0
+  },
+  "assetTabs": [
+    { "key": "all", "label": "Tất cả" },
+    { "key": "crypto", "label": "Crypto" },
+    { "key": "fiat", "label": "Fiat / VNĐ" }
+  ],
+  "historyTabs": [
+    { "key": "all", "label": "Tất cả" },
+    { "key": "deposit", "label": "Nạp" },
+    { "key": "withdraw", "label": "Rút" }
+  ],
+  "assets": [
+    {
+      "coin": "USDT", "name": "Tether USD", "symbol": "₮", "tone": "usdt", "category": "crypto",
+      "price": 1, "total": 31450.00, "available": 23022.44, "locked": 8427.56,
+      "decimals": 2, "lockedDecimals": 2, "unitOnTotal": false,
+      "defaultNetwork": "TRC20",
+      "networks": [
+        { "key": "TRC20", "name": "TRC20", "chain": "Tron Network", "label": "TRC20 (Tron)", "fee": 1.0, "minWithdraw": 10, "minDeposit": 1, "confirmations": 12, "eta": "2 phút", "status": "normal", "addressPrefix": "T", "addressLength": 34, "placeholder": "Dán địa chỉ ví Tron (bắt đầu bằng chữ T)", "depositAddress": "TWh8vKz67a9Bxc31N4m9xKQ8Lp7eZ4rW9a" },
+        { "key": "BEP20", "name": "BEP20", "chain": "BNB Chain", "label": "BEP20 (BNB Chain)", "fee": 0.3, "minWithdraw": 10, "minDeposit": 1, "confirmations": 15, "eta": "1 phút", "status": "normal", "addressPrefix": "0x", "addressLength": 42, "placeholder": "Dán địa chỉ ví BNB Chain (bắt đầu bằng 0x)", "depositAddress": "0x7Fa31c9E2bD04a6c58E1f93D2aB7c4e05D19b8A2" },
+        { "key": "ERC20", "name": "ERC20", "chain": "Ethereum", "label": "ERC20 (Ethereum)", "fee": 4.0, "minWithdraw": 20, "minDeposit": 5, "confirmations": 64, "eta": "5 phút", "status": "normal", "addressPrefix": "0x", "addressLength": 42, "placeholder": "Dán địa chỉ ví Ethereum (bắt đầu bằng 0x)", "depositAddress": "0x7Fa31c9E2bD04a6c58E1f93D2aB7c4e05D19b8A2" },
+        { "key": "SOL", "name": "SOL", "chain": "Solana", "label": "SOL (Solana)", "fee": 0.8, "minWithdraw": 10, "minDeposit": 1, "confirmations": 32, "eta": "1 phút", "status": "busy", "addressPrefix": "", "addressLength": 44, "placeholder": "Dán địa chỉ ví Solana (Base58)", "depositAddress": "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU" }
+      ]
+    },
+    {
+      "coin": "BTC", "name": "Bitcoin", "symbol": "B", "tone": "btc", "category": "crypto",
+      "price": 67420.49, "total": 0.185, "available": 0.185, "locked": 0,
+      "decimals": 3, "lockedDecimals": 6, "unitOnTotal": true,
+      "defaultNetwork": "BTC",
+      "networks": [
+        { "key": "BTC", "name": "BTC", "chain": "Bitcoin", "label": "BTC (Bitcoin)", "fee": 0.0002, "minWithdraw": 0.001, "minDeposit": 0.0001, "confirmations": 2, "eta": "30 phút", "status": "normal", "addressPrefix": "bc1", "addressLength": 42, "placeholder": "Dán địa chỉ ví Bitcoin (bắt đầu bằng bc1)", "depositAddress": "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh" },
+        { "key": "BEP20", "name": "BEP20", "chain": "BNB Chain", "label": "BEP20 (BNB Chain)", "fee": 0.000008, "minWithdraw": 0.0002, "minDeposit": 0.00001, "confirmations": 15, "eta": "1 phút", "status": "normal", "addressPrefix": "0x", "addressLength": 42, "placeholder": "Dán địa chỉ ví BNB Chain (bắt đầu bằng 0x)", "depositAddress": "0x7Fa31c9E2bD04a6c58E1f93D2aB7c4e05D19b8A2" },
+        { "key": "LN", "name": "Lightning", "chain": "Lightning Network", "label": "Lightning Network", "fee": 0.000001, "minWithdraw": 0.00001, "minDeposit": 0.00001, "confirmations": 1, "eta": "< 1 phút", "status": "normal", "addressPrefix": "lnbc", "addressLength": 0, "placeholder": "Dán hoá đơn Lightning (bắt đầu bằng lnbc)", "depositAddress": "lnbc1pvjluezpp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypq" }
+      ]
+    },
+    {
+      "coin": "ETH", "name": "Ethereum", "symbol": "Ξ", "tone": "eth", "category": "crypto",
+      "price": 3540.20, "total": 1.220, "available": 1.220, "locked": 0,
+      "decimals": 3, "lockedDecimals": 6, "unitOnTotal": true,
+      "defaultNetwork": "ERC20",
+      "networks": [
+        { "key": "ERC20", "name": "ERC20", "chain": "Ethereum", "label": "ERC20 (Ethereum)", "fee": 0.0016, "minWithdraw": 0.01, "minDeposit": 0.001, "confirmations": 64, "eta": "5 phút", "status": "normal", "addressPrefix": "0x", "addressLength": 42, "placeholder": "Dán địa chỉ ví Ethereum (bắt đầu bằng 0x)", "depositAddress": "0x7Fa31c9E2bD04a6c58E1f93D2aB7c4e05D19b8A2" },
+        { "key": "ARB", "name": "Arbitrum", "chain": "Arbitrum One", "label": "Arbitrum One", "fee": 0.0001, "minWithdraw": 0.002, "minDeposit": 0.0005, "confirmations": 120, "eta": "3 phút", "status": "normal", "addressPrefix": "0x", "addressLength": 42, "placeholder": "Dán địa chỉ ví Arbitrum (bắt đầu bằng 0x)", "depositAddress": "0x7Fa31c9E2bD04a6c58E1f93D2aB7c4e05D19b8A2" },
+        { "key": "OP", "name": "Optimism", "chain": "OP Mainnet", "label": "Optimism (OP Mainnet)", "fee": 0.00008, "minWithdraw": 0.002, "minDeposit": 0.0005, "confirmations": 120, "eta": "3 phút", "status": "normal", "addressPrefix": "0x", "addressLength": 42, "placeholder": "Dán địa chỉ ví Optimism (bắt đầu bằng 0x)", "depositAddress": "0x7Fa31c9E2bD04a6c58E1f93D2aB7c4e05D19b8A2" },
+        { "key": "BEP20", "name": "BEP20", "chain": "BNB Chain", "label": "BEP20 (BNB Chain)", "fee": 0.00009, "minWithdraw": 0.002, "minDeposit": 0.0005, "confirmations": 15, "eta": "1 phút", "status": "normal", "addressPrefix": "0x", "addressLength": 42, "placeholder": "Dán địa chỉ ví BNB Chain (bắt đầu bằng 0x)", "depositAddress": "0x7Fa31c9E2bD04a6c58E1f93D2aB7c4e05D19b8A2" }
+      ]
+    },
+    {
+      "coin": "SOL", "name": "Solana", "symbol": "S", "tone": "sol", "category": "crypto",
+      "price": 152.60, "total": 0.050, "available": 0.050, "locked": 0,
+      "decimals": 3, "lockedDecimals": 6, "unitOnTotal": true,
+      "defaultNetwork": "SOL",
+      "networks": [
+        { "key": "SOL", "name": "SOL", "chain": "Solana", "label": "SOL (Solana)", "fee": 0.008, "minWithdraw": 0.02, "minDeposit": 0.01, "confirmations": 32, "eta": "1 phút", "status": "busy", "addressPrefix": "", "addressLength": 44, "placeholder": "Dán địa chỉ ví Solana (Base58)", "depositAddress": "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU" },
+        { "key": "BEP20", "name": "BEP20", "chain": "BNB Chain", "label": "BEP20 (BNB Chain)", "fee": 0.001, "minWithdraw": 0.02, "minDeposit": 0.01, "confirmations": 15, "eta": "1 phút", "status": "normal", "addressPrefix": "0x", "addressLength": 42, "placeholder": "Dán địa chỉ ví BNB Chain (bắt đầu bằng 0x)", "depositAddress": "0x7Fa31c9E2bD04a6c58E1f93D2aB7c4e05D19b8A2" }
+      ]
+    },
+    {
+      "coin": "XAUT", "name": "Tether Gold", "symbol": "AU", "tone": "gold", "category": "crypto",
+      "price": 2345.10, "total": 0, "available": 0, "locked": 0,
+      "decimals": 2, "lockedDecimals": 2, "unitOnTotal": true,
+      "defaultNetwork": "ERC20",
+      "networks": [
+        { "key": "ERC20", "name": "ERC20", "chain": "Ethereum", "label": "ERC20 (Ethereum)", "fee": 0.0012, "minWithdraw": 0.01, "minDeposit": 0.001, "confirmations": 64, "eta": "5 phút", "status": "normal", "addressPrefix": "0x", "addressLength": 42, "placeholder": "Dán địa chỉ ví Ethereum (bắt đầu bằng 0x)", "depositAddress": "0x7Fa31c9E2bD04a6c58E1f93D2aB7c4e05D19b8A2" },
+        { "key": "TON", "name": "TON", "chain": "The Open Network", "label": "TON (The Open Network)", "fee": 0.0002, "minWithdraw": 0.005, "minDeposit": 0.001, "confirmations": 1, "eta": "1 phút", "status": "normal", "addressPrefix": "", "addressLength": 0, "memoRequired": true, "placeholder": "Dán địa chỉ ví TON", "depositAddress": "EQD5mxRgCuRNLxKxeOjG6r14iSroLF5FtomPnet-sgP5xNJb", "memo": "88421907" }
+      ]
+    }
+  ],
+  "withdrawDefaults": {
+    "coin": "USDT",
+    "address": "TY1U89kxqZf9M5N2yR3gHp7L4wE1aBc9V0",
+    "amount": "5000.00"
+  },
+  "addressBook": [
+    { "network": "TRC20", "label": "Ví lạnh Ledger", "address": "TY1U89kxqZf9M5N2yR3gHp7L4wE1aBc9V0" },
+    { "network": "TRC20", "label": "Sàn đối tác OTC", "address": "TLa2f6VPqDgRE67v1736s7bJ8Ray5wYjU7" },
+    { "network": "BEP20", "label": "Ví MetaMask", "address": "0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE" },
+    { "network": "ERC20", "label": "Ví MetaMask", "address": "0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE" },
+    { "network": "BTC", "label": "Ví lạnh Trezor", "address": "bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq" },
+    { "network": "SOL", "label": "Ví Phantom", "address": "9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM" }
+  ],
+  "bank": {
+    "coin": "USDT",
+    "rateVnd": 25380,
+    "feePct": 0.1,
+    "minFeeUsdt": 1,
+    "minUsdt": 10,
+    "eta": "5–15 phút",
+    "accounts": [
+      { "id": "vcb", "bank": "Vietcombank", "holder": "NGUYEN MINH TRADER", "number": "0071000988421", "napas": true, "default": true },
+      { "id": "tcb", "bank": "Techcombank", "holder": "NGUYEN MINH TRADER", "number": "19036688421907", "napas": true },
+      { "id": "mb", "bank": "MB Bank", "holder": "NGUYEN MINH TRADER", "number": "0886688421", "napas": false }
+    ]
+  },
+  "history": [
+    { "id": "h1", "type": "withdraw", "title": "Rút tiền USDT", "sub": "Mạng TRC20", "amount": 5000.00, "unit": "USDT", "decimals": 2, "txid": "e8f471c09ad2e6b1f30c5a77d94e2b8c1f6a3d05e9b7742c81a0f3d6b21c4", "time": "24/10/2024 09:15:32", "status": "success" },
+    { "id": "h2", "type": "deposit", "title": "Nạp tiền VNĐ P2P", "sub": "Chuyển khoản Vietcombank 24/7", "amount": 50000000, "unit": "VNĐ", "decimals": 0, "note": "(~$1,960 USDT)", "txid": "NX-VN9928107", "time": "23/10/2024 14:30:11", "status": "done" },
+    { "id": "h3", "type": "deposit", "title": "Nạp tiền USDT", "sub": "Mạng BEP20 (BNB Chain)", "amount": 2500.00, "unit": "USDT", "decimals": 2, "txid": "0x9a84c2e1f7b03d56a9e8c4b21f0d7e63a5c9b18e04f2d7a6c3b9e1f5071fa8", "time": "20/10/2024 18:02:45", "status": "done" }
+  ],
+  "statusLabels": {
+    "success": { "label": "Thành công", "tone": "success" },
+    "done": { "label": "Hoàn tất", "tone": "success" },
+    "pending": { "label": "Đang xử lý", "tone": "warn" },
+    "failed": { "label": "Thất bại", "tone": "danger" }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "usdVnd": 25400,
+  "ticker": {
+    "marketCap": { "label": "Vốn hóa 24h:", "value": "$2.584T", "change": 1.94 },
+    "volume": { "label": "Khối lượng 24h:", "value": "$48.2B", "sub": "(641,208 BTC)" },
+    "fearGreed": { "label": "Fear & Greed:", "value": 74, "text": "Tham lam" },
+    "btcDominance": "54.8%",
+    "ethGas": "12 Gwei",
+    "safuVault": "$1.20B Đảm bảo",
+    "tps": "140,000/s"
+  },
+  "tabs": [
+    { "key": "all", "label": "Tất cả" },
+    { "key": "hot", "label": "Hot" },
+    { "key": "gainers", "label": "Top Tăng trưởng" },
+    { "key": "layer", "label": "Layer 1/2" },
+    { "key": "futures", "label": "Futures" }
+  ],
+  "pairs": [
+    { "base": "BTC", "quote": "USDT", "name": "Bitcoin", "symbol": "₿", "symbolColor": "primary", "leverage": "100X", "price": 67420.50, "change": 3.85, "volumeUsd": 28.4e9, "volumeBase": 421240, "tags": ["hot", "layer", "futures"], "spark": [25, 22, 24, 21, 18, 15, 12, 9, 6, 2] },
+    { "base": "ETH", "quote": "USDT", "name": "Ethereum", "symbol": "Ξ", "symbolColor": "on-surface", "leverage": "75X", "price": 3540.20, "change": 2.41, "volumeUsd": 14.1e9, "volumeBase": 3982800, "tags": ["hot", "layer", "futures"], "spark": [22, 25, 23, 20, 17, 14, 12, 10, 7, 5] },
+    { "base": "OKB", "quote": "USDT", "name": "OKB Utility Token", "symbol": "O", "symbolColor": "muted", "price": 48.90, "change": -1.15, "volumeUsd": 320e6, "volumeBase": 6543900, "tags": [], "spark": [8, 6, 9, 16, 19, 22, 21, 20, 23, 26] },
+    { "base": "SOL", "quote": "USDT", "name": "Solana", "symbol": "S", "symbolColor": "secondary", "leverage": "50X", "price": 152.75, "change": 6.18, "volumeUsd": 4.8e9, "volumeBase": 31420000, "tags": ["hot", "layer", "futures"], "spark": [27, 25, 21, 16, 17, 18, 13, 8, 5, 2] },
+    { "base": "DOGE", "quote": "USDT", "name": "Dogecoin", "symbol": "Ð", "symbolColor": "primary", "price": 0.1245, "change": 1.82, "volumeUsd": 890e6, "volumeBase": 7148590000, "tags": ["hot"], "spark": [19, 22, 21, 18, 15, 12, 13, 14, 10, 7] },
+    { "base": "XRP", "quote": "USDT", "name": "Ripple Ledger", "symbol": "✕", "symbolColor": "on-surface", "price": 0.5820, "change": -0.64, "volumeUsd": 1.2e9, "volumeBase": 2061850000, "tags": ["layer"], "spark": [12, 11, 10, 15, 20, 19, 18, 22, 25, 28] },
+    { "base": "XAUT", "quote": "USDT", "name": "Tether Gold (Ounce)", "symbol": "Au", "symbolColor": "gold", "badge": "VÀNG VẬT CHẤT", "price": 2385.10, "change": 0.42, "volumeUsd": 210e6, "volumeBase": 88046, "tags": ["futures"], "spark": [18, 17.5, 17, 15, 14.5, 14, 13, 11, 9.5, 8] }
+  ],
+  "vip": {
+    "eyebrow": "Chương Trình Đặc Quyền VIP Club",
+    "title": "Đặc quyền Thăng hạng VIP - Nạp vốn nhận thưởng tiền mặt tức thì",
+    "desc": "Khám phá 9 cấp bậc tôn vinh khối lượng giao dịch và tài sản. Tiền thưởng ghi có thẳng vào ví Spot ngay sau khi xác nhận nạp tiền thành công, đi kèm giảm đến 80% phí Maker/Taker.",
+    "currentLabel": "Cấp VIP hiện tại của bạn",
+    "currentText": "VIP 3 · Bạc Tier",
+    "tiers": [
+      { "level": 1, "name": "Khởi đầu", "icon": "shield", "deposit": 120, "bonus": 18, "metricLabel": "Tỷ lệ thưởng tức thì:", "metricValue": "15.0%", "progress": 100 },
+      { "level": 2, "name": "Đồng", "icon": "military_tech", "deposit": 500, "bonus": 68, "metricLabel": "Tỷ lệ thưởng tức thì:", "metricValue": "13.6%", "progress": 85 },
+      { "level": 3, "name": "Bạc", "icon": "verified", "deposit": 2000, "bonus": 168, "metricLabel": "Tỷ lệ hoàn vốn:", "metricValue": "Đã đạt đủ điều kiện", "metricTone": "secondary", "progress": 100 },
+      { "level": 4, "name": "Vàng", "icon": "stars", "deposit": 5000, "bonus": 588, "metricLabel": "Tỷ lệ thưởng tức thì:", "metricValue": "11.76%", "progress": 70 },
+      { "level": 5, "name": "Bạch kim", "icon": "diamond", "deposit": 10000, "bonus": 1188, "metricLabel": "Tỷ lệ thưởng tức thì:", "metricValue": "11.88%", "progress": 65 },
+      { "level": 6, "name": "Kim cương", "icon": "token", "deposit": 20000, "bonus": 1888, "metricLabel": "Hạn mức rút / ngày:", "metricValue": "2,000,000 USD", "progress": 55 },
+      { "level": 7, "name": "Tinh anh", "icon": "local_police", "deposit": 30000, "bonus": 2888, "metricLabel": "Quản lý quỹ cá nhân 1-1:", "metricValue": "Kích hoạt", "metricTone": "secondary", "progress": 45 },
+      { "level": 8, "name": "Bậc thầy", "icon": "crown", "deposit": 50000, "bonus": 6888, "metricLabel": "Phí Maker Futures:", "metricValue": "0.000% (Miễn phí)", "metricTone": "secondary", "progress": 35 },
+      { "level": 9, "name": "Huyền thoại VIP", "icon": "hotel_class", "deposit": 100000, "bonus": 15888, "metricLabel": "Đặc quyền tối thượng:", "metricValue": "Tín dụng OTC & Gala VIP", "progress": 20, "legend": true, "cta": "Đăng ký VIP Huyền Thoại" }
+    ]
+  },
+  "trust": [
+    { "icon": "security", "tone": "primary", "title": "Quỹ Bảo Hộ SAFU", "desc": "Lưu trữ lạnh 100% tài sản phòng vệ rủi ro" },
+    { "icon": "verified_user", "tone": "secondary", "title": "Bằng chứng Dự trữ (PoR)", "desc": "Kiểm toán Merkle Tree minh bạch 1:1" },
+    { "icon": "speed", "tone": "primary", "title": "Độ Trễ Siêu Thấp", "desc": "Khớp lệnh microsecond chuẩn tài chính Wall Street" },
+    { "icon": "support_agent", "tone": "secondary", "title": "Hỗ Trợ VIP 24/7/365", "desc": "Đội ngũ kỹ thuật viên song ngữ đồng hành" }
+  ]
+}

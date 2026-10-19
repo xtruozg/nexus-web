@@ -1,0 +1,91 @@
+{
+  "uidPrefix": "NX-",
+  "nickname": "NamCrypto_Pro",
+  "memberSince": "15/03/2022",
+  "lastLogin": { "time": "Hôm nay 14:20", "ip": "118.69.**.**" },
+  "kyc": {
+    "level": 2,
+    "badge": "Đã xác minh cấp 2",
+    "status": "Đã xác minh Level 2 (Nâng cao)",
+    "verifiedAt": "18/03/2022",
+    "document": "CCCD **** **** 4521",
+    "country": "Việt Nam",
+    "checks": [
+      { "label": "Thông tin cá nhân", "done": true },
+      { "label": "Ảnh chụp CCCD/Hộ chiếu", "done": true },
+      { "label": "Nhận diện khuôn mặt sinh trắc học", "done": true },
+      { "label": "Xác minh địa chỉ cư trú (Level 3)", "done": false }
+    ]
+  },
+  "balance": { "total": 48250, "currency": "USDT", "weekChange": 12.4, "vnd": 1228450000 },
+  "safety": { "base": 98 },
+  "stats": [
+    { "key": "safety", "icon": "verified_user", "tone": "secondary", "label": "Cấp độ an toàn", "value": "Rất cao (98%)" },
+    { "key": "limit", "icon": "payments", "tone": "primary", "label": "Hạn mức rút / 24h", "value": "500,000 USDT" },
+    { "key": "fee", "icon": "percent", "tone": "secondary", "label": "Ưu đãi phí Maker/Taker", "value": "0.02% / 0.04%" },
+    { "key": "support", "icon": "headset_mic", "tone": "primary", "label": "Hỗ trợ CSKH 1-1", "value": "Chuyên viên VIP" }
+  ],
+  "settings": {
+    "title": "Cài đặt tài khoản & Bảo mật",
+    "desc": "Quản trị trạng thái định danh, kênh thanh toán, mật khẩu ví và trung tâm hỗ trợ trực tuyến",
+    "items": [
+      {
+        "key": "support", "icon": "support_agent", "tone": "primary",
+        "title": "Liên hệ CSKH",
+        "tag": { "text": "Trực tuyến 24/7 - Phản hồi dưới 2 phút", "style": "live" },
+        "desc": "Kênh trò chuyện trực tuyến riêng biệt dành cho thành viên VIP, hỗ trợ nạp rút và kỹ thuật tức thì",
+        "action": { "type": "link", "text": "Bắt đầu trò chuyện", "icon": "chat" },
+        "done": true
+      },
+      {
+        "key": "kyc", "icon": "badge", "tone": "secondary",
+        "title": "Xác minh danh tính (KYC)",
+        "desc": "Hồ sơ pháp lý, ảnh chụp CCCD/Hộ chiếu và nhận diện khuôn mặt sinh trắc học",
+        "action": { "type": "status", "text": "Đã xác minh Level 2 (Nâng cao)", "icon": "check_circle", "tone": "success", "fill": true },
+        "done": true
+      },
+      {
+        "key": "pin", "icon": "pin", "tone": "primary",
+        "title": "Mật khẩu ví giao dịch",
+        "tag": { "text": "Mã PIN 6 chữ số", "style": "plain" },
+        "desc": "Mã bảo mật cấp phát bắt buộc khi thực hiện rút tiền hoặc chuyển tài sản nội bộ",
+        "action": { "type": "status", "text": "Đã thiết lập / Đổi mật khẩu ví", "icon": "lock_reset", "tone": "neutral" },
+        "done": true
+      },
+      {
+        "key": "bank", "icon": "account_balance", "tone": "neutral",
+        "title": "Thông tin tài khoản ngân hàng",
+        "tag": { "text": "Rút VNĐ / P2P", "style": "plain" },
+        "desc": "Tài khoản ngân hàng thụ hưởng nhận tiền fiat tức thì không mất phí nạp rút",
+        "action": { "type": "status", "text": "Đã liên kết: Vietcombank ****8899", "icon": "credit_card", "tone": "neutral" },
+        "done": true
+      },
+      {
+        "key": "2fa", "icon": "security", "tone": "secondary",
+        "title": "Bảo mật 2 lớp (2FA Authenticator)",
+        "tag": { "text": "Đã bảo vệ", "style": "success" },
+        "desc": "Mã xác minh động qua Google Authenticator / Authy cho mỗi lần đăng nhập và rút tiền",
+        "action": { "type": "status", "text": "Google Authenticator", "icon": "phonelink_lock", "tone": "success" },
+        "done": true
+      }
+    ]
+  },
+  "bank": {
+    "name": "Vietcombank",
+    "number": "0071000568899",
+    "holder": "TRAN BAO NAM",
+    "options": ["Vietcombank", "Techcombank", "BIDV", "VietinBank", "MB Bank", "ACB", "VPBank", "TPBank"]
+  },
+  "security": {
+    "twoFA": true,
+    "twoFAApp": "Google Authenticator",
+    "withdrawWhitelist": true,
+    "loginAlert": true
+  },
+  "devices": [
+    { "id": "d1", "icon": "laptop_mac", "name": "MacBook Pro M3", "location": "TP.HCM, VN", "client": "Chrome 124", "ip": "118.69.**.**", "lastActive": "Đang hoạt động", "current": true },
+    { "id": "d2", "icon": "smartphone", "name": "iPhone 15 Pro Max", "location": "TP.HCM, VN", "client": "Nexus iOS App v4.2", "ip": "113.161.**.**", "lastActive": "2 giờ trước", "current": false }
+  ],
+  "antiPhishing": { "enabled": true, "code": "NEXUS77" },
+  "session": { "id": 4910 }
+}

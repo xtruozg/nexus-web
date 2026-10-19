@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>Lịch sử & Báo cáo thuế | Nexus Exchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/history.css">
+</head>
+<body data-page="history" data-shell="app">
+  <main>
+    <div class="hist">
+      <div class="hist__glow hist__glow--amber"></div>
+      <div class="hist__glow hist__glow--green"></div>
+
+      <div class="container hist__stack">
+        <!-- 1. Tiêu đề & hành động nhanh -->
+        <section class="hist-head">
+          <div class="hist-head__text">
+            <div class="hist-head__title-row">
+              <h1 class="hist-head__title">Lịch sử Giao dịch &amp; Sao kê Tài chính</h1>
+              <span class="hist-pill hist-pill--green"><span class="icon icon-14">verified</span><span>Chuẩn IFRS &amp; GAAP Certified</span></span>
+              <span class="hist-pill hist-pill--neutral num"><span class="icon c-primary" style="font-size:13px">lock</span><span>Mã hóa SHA-256</span></span>
+            </div>
+            <p class="t-body-md c-muted">Trung tâm lưu ký, kiểm toán chi phí vốn (Cost Basis) và tính toán nghĩa vụ thuế giao dịch tiền mã hóa đa tài sản.</p>
+          </div>
+          <div class="hist-head__actions">
+            <div class="dropdown" data-dropdown>
+              <button type="button" class="hist-btn hist-btn--export" aria-haspopup="true">
+                <span class="icon icon-18 c-primary">download</span><span>Xuất file Sao kê</span><span class="icon icon-16 c-muted">expand_more</span>
+              </button>
+              <div class="dropdown__menu hist-export">
+                <button type="button" class="dropdown__item hist-export__item" data-export="pdf"><span class="flex items-center gap-xs c-on-surface"><span class="icon icon-16 c-error">picture_as_pdf</span>Bản in PDF (Có dấu đỏ)</span><span class="t-label-sm c-muted">A4</span></button>
+                <button type="button" class="dropdown__item hist-export__item" data-export="xlsx"><span class="flex items-center gap-xs c-on-surface"><span class="icon icon-16 c-secondary">table_view</span>Excel (.XLSX)</span><span class="t-label-sm c-muted">Sổ cái</span></button>
+                <button type="button" class="dropdown__item hist-export__item" data-export="csv"><span class="flex items-center gap-xs c-on-surface"><span class="icon icon-16 c-primary">data_object</span>Tệp thô (.CSV)</span><span class="t-label-sm c-muted">Dữ liệu</span></button>
+              </div>
+            </div>
+            <button type="button" class="hist-btn hist-btn--primary" id="open-tax"><span class="icon icon-18">receipt_long</span><span>Tạo Báo cáo Thuế</span></button>
+          </div>
+        </section>
+
+        <!-- 1B. KPI -->
+        <section class="hist-kpis" id="hist-kpis"></section>
+
+        <!-- 2. Bộ lọc đa tiêu chí -->
+        <section class="hist-card hist-filters">
+          <div class="hist-filters__top">
+            <div class="hist-tabs" id="hist-tabs" role="tablist"></div>
+            <div class="hist-filters__basis">
+              <span>Thuật toán chi phí vốn:</span>
+              <span class="hist-basis-badge" id="basis-badge"></span>
+            </div>
+          </div>
+          <div class="hist-filters__grid">
+            <div class="hist-range">
+              <div class="hist-range__presets" id="date-presets"></div>
+              <div class="hist-range__sep"></div>
+              <div class="hist-range__custom">
+                <button type="button" class="hist-range__btn num" id="range-btn" aria-haspopup="true"><span class="icon c-primary" style="font-size:15px">calendar_month</span><span id="range-label"></span></button>
+                <div class="hist-range__pop" id="range-pop">
+                  <label class="field"><span class="field__label">Từ ngày</span><input class="input" type="date" id="range-from"></label>
+                  <label class="field"><span class="field__label">Đến ngày</span><input class="input" type="date" id="range-to"></label>
+                  <button type="button" class="btn btn--primary btn--block" id="range-apply">Áp dụng</button>
+                </div>
+              </div>
+            </div>
+            <label class="hist-select">
+              <span class="sr-only">Cặp tài sản</span>
+              <select id="f-asset"></select>
+              <span class="icon icon-16">unfold_more</span>
+            </label>
+            <label class="hist-select">
+              <span class="sr-only">Hành động</span>
+              <select id="f-action"></select>
+              <span class="icon icon-16">expand_more</span>
+            </label>
+            <label class="hist-search">
+              <span class="icon icon-18">search</span>
+              <input type="text" id="f-search" placeholder="Tìm theo Mã lệnh hoặc TxID..." autocomplete="off">
+            </label>
+            <div class="hist-filters__btns">
+              <button type="button" class="hist-icon-btn" id="f-reset" title="Làm mới bộ lọc"><span class="icon icon-18">restart_alt</span></button>
+              <button type="button" class="hist-icon-btn hist-icon-btn--primary" id="f-apply" title="Lọc dữ liệu"><span class="icon icon-18">filter_alt</span></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Bảng sao kê chi tiết -->
+        <section class="hist-card hist-ledger">
+          <div class="hist-ledger__bar">
+            <div class="flex items-center gap-sm">
+              <h2 class="t-headline-sm">Nhật ký Giao dịch Chi tiết</h2>
+              <span class="hist-pill hist-pill--dim num">Đã đối soát IFRS</span>
+            </div>
+            <div class="hist-legend" id="hist-legend"></div>
+          </div>
+          <div class="hist-table-wrap">
+            <table class="hist-table">
+              <thead>
+                <tr>
+                  <th class="hist-th-sort" data-sort="time" style="min-width:140px">Thời gian (UTC+7)</th>
+                  <th style="min-width:180px">Loại &amp; Cặp tài sản</th>
+                  <th class="hist-th-sort" data-sort="amountUsd" style="min-width:190px">Chi tiết Khớp lệnh</th>
+                  <th class="hist-th-sort" data-sort="feeUsd" style="min-width:140px">Phí (VIP 3 -80%)</th>
+                  <th class="hist-th-sort" data-sort="pnlUsd" style="min-width:170px">Lãi/Lỗ Thực tế (PnL)</th>
+                  <th style="min-width:150px">Mã TxID / Lệnh</th>
+                  <th style="min-width:110px">Trạng thái</th>
+                  <th class="text-right" style="min-width:100px">Biên lai</th>
+                </tr>
+              </thead>
+              <tbody id="hist-rows"></tbody>
+            </table>
+          </div>
+          <div class="hist-pager">
+            <div class="hist-pager__info">
+              <span class="t-body-sm c-muted" id="pager-info"></span>
+              <label class="hist-pager__size">
+                <span>Bản ghi/trang:</span>
+                <select id="per-page" class="num"></select>
+              </label>
+            </div>
+            <nav class="hist-pager__pages" id="pager-pages" aria-label="Phân trang"></nav>
+          </div>
+        </section>
+
+        <!-- 4. Thuế & kế toán -->
+        <section class="hist-tax">
+          <div class="hist-card hist-basis">
+            <div>
+              <div class="hist-basis__head">
+                <div class="flex items-center gap-xs">
+                  <span class="icon icon-22 c-primary">balance</span>
+                  <h3 class="t-headline-sm fw-700">Phương pháp Định giá Vốn &amp; Quyền Chọn Kế toán</h3>
+                </div>
+                <span class="hist-chip hist-chip--vip">Khuyến nghị Kiểm toán</span>
+              </div>
+              <p class="t-body-sm c-muted">Lựa chọn quy tắc khớp lệnh tính toán giá vốn để tối ưu số thuế lợi vốn phát sinh (Capital Gains Tax). Thay đổi sẽ đồng bộ lại sổ cái lập tức.</p>
+            </div>
+            <div class="hist-methods" id="hist-methods" role="radiogroup" aria-label="Phương pháp giá vốn"></div>
+            <div class="hist-sync">
+              <div class="hist-sync__left">
+                <span class="t-label-sm c-muted">Cổng đồng bộ phần mềm:</span>
+                <div class="hist-sync__list" id="hist-integrations"></div>
+              </div>
+              <button type="button" class="hist-sync__link" id="api-link"><span>Tự động liên kết API</span><span class="icon icon-14">arrow_forward</span></button>
+            </div>
+          </div>
+
+          <div class="hist-card hist-alloc">
+            <div class="hist-alloc__head">
+              <div class="flex items-center gap-xs">
+                <span class="icon icon-22 c-secondary">bar_chart</span>
+                <h3 class="t-headline-sm fw-700">Phân bổ Lợi nhuận <span class="dropdown hist-year" data-dropdown><button type="button" class="hist-year__btn" id="year-btn" aria-haspopup="true"></button><span class="dropdown__menu hist-year__menu" id="year-menu"></span></span></h3>
+              </div>
+              <span class="hist-alloc__total num" id="alloc-total"></span>
+            </div>
+            <div class="hist-alloc__bars" id="alloc-bars"></div>
+            <div class="hist-alloc__note">
+              <span class="icon icon-16 c-primary">shield</span>
+              <span id="audit-note"></span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Modal: Tạo báo cáo thuế -->
+    <div class="modal hist-modal" id="tax-modal" role="dialog" aria-modal="true" aria-labelledby="tax-modal-title">
+      <div class="modal__box hist-modal__box">
+        <div class="hist-modal__head">
+          <div class="flex items-center gap-xs">
+            <span class="icon icon-22 c-primary">description</span>
+            <span class="t-headline-md fw-700" id="tax-modal-title">Tạo Báo Cáo Quyết Toán Thuế</span>
+          </div>
+          <button type="button" class="hist-modal__close" data-close aria-label="Đóng"><span class="icon icon-20">close</span></button>
+        </div>
+        <div class="hist-modal__body">
+          <div>
+            <label class="hist-modal__label" for="tax-period">Kỳ tính thuế:</label>
+            <div class="hist-select hist-select--lg">
+              <select id="tax-period"></select>
+              <span class="icon icon-16">expand_more</span>
+            </div>
+          </div>
+          <div>
+            <span class="hist-modal__label">Mục đích sử dụng báo cáo:</span>
+            <div class="hist-purpose" id="tax-purpose"></div>
+          </div>
+          <div>
+            <span class="hist-modal__label">Định dạng xuất tệp:</span>
+            <div class="hist-formats" id="tax-formats"></div>
+          </div>
+          <div class="hist-preview" id="tax-preview"></div>
+          <div class="hist-attest" id="tax-attest"></div>
+        </div>
+        <div class="hist-modal__foot">
+          <button type="button" class="hist-btn hist-btn--ghost" data-close>Hủy bỏ</button>
+          <button type="button" class="hist-btn hist-btn--primary hist-btn--wide" id="tax-submit">Tải xuống Báo cáo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Biên lai giao dịch -->
+    <div class="modal hist-modal" id="receipt-modal" role="dialog" aria-modal="true" aria-labelledby="receipt-title">
+      <div class="modal__box hist-modal__box">
+        <div class="hist-modal__head">
+          <div class="flex items-center gap-xs">
+            <span class="icon icon-22 c-primary">receipt</span>
+            <span class="t-headline-md fw-700" id="receipt-title">Biên lai Sao kê Điện tử</span>
+          </div>
+          <button type="button" class="hist-modal__close" data-close aria-label="Đóng"><span class="icon icon-20">close</span></button>
+        </div>
+        <div class="hist-modal__body" id="receipt-body"></div>
+        <div class="hist-modal__foot">
+          <button type="button" class="hist-btn hist-btn--ghost" id="receipt-copy"><span class="icon icon-16">content_copy</span><span>Sao chép mã</span></button>
+          <button type="button" class="hist-btn hist-btn--primary" id="receipt-download"><span class="icon icon-18">download</span><span>Tải biên lai (.CSV)</span></button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/history.js"></script>
+</body>
+</html>

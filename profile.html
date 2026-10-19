@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>Trung tâm tài khoản | Nexus Exchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/profile.css">
+</head>
+<body data-page="profile-settings" data-shell="app">
+  <main>
+    <!-- Breadcrumb / trạng thái bảo mật -->
+    <div class="pf-crumb">
+      <div class="pf-wrap pf-crumb__inner">
+        <div class="flex items-center gap-xs">
+          <a class="pf-crumb__home" href="index.html"><span class="icon icon-16">home</span><span>Trang chủ</span></a>
+          <span>/</span>
+          <span class="t-label-md c-on-surface">Trung tâm tài khoản</span>
+        </div>
+        <div class="flex items-center gap-md">
+          <span class="pf-crumb__live t-label-sm"><span class="dot animate-pulse"></span>Hệ thống bảo mật trực tuyến</span>
+          <span class="pf-crumb__ssl t-data hide-xs">SSL 256-Bit Encrypted</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pf-wrap pf-page">
+      <!-- 1. Hero hồ sơ + số dư -->
+      <section class="pf-hero" aria-label="Thông tin tài khoản">
+        <div class="pf-hero__glow pf-hero__glow--tr"></div>
+        <div class="pf-hero__glow pf-hero__glow--bl"></div>
+        <div class="pf-hero__inner">
+          <div class="pf-id" id="pf-identity"></div>
+          <div class="pf-balance" id="pf-balance"></div>
+        </div>
+      </section>
+
+      <!-- 2. Chỉ số nhanh -->
+      <section class="pf-stats" id="pf-stats" aria-label="Chỉ số tài khoản"></section>
+
+      <!-- 3. Cài đặt tài khoản & bảo mật -->
+      <section class="pf-settings" aria-labelledby="pf-settings-title">
+        <div class="pf-settings__head">
+          <div>
+            <h2 class="t-headline-md fw-700" id="pf-settings-title"></h2>
+            <p class="t-body-sm c-muted" id="pf-settings-desc"></p>
+          </div>
+          <span class="pf-settings__count t-label-sm hide-xs" id="pf-settings-count"></span>
+        </div>
+        <div class="pf-settings__list" id="pf-settings-list"></div>
+      </section>
+
+      <!-- 4. Thiết bị / chống giả mạo / phiên -->
+      <section class="pf-audit" aria-label="Hoạt động bảo mật">
+        <article class="pf-card" id="pf-devices"></article>
+        <article class="pf-card" id="pf-phishing"></article>
+        <article class="pf-card" id="pf-session"></article>
+      </section>
+    </div>
+
+    <!-- Modal dùng chung -->
+    <div class="modal" id="pf-modal" role="dialog" aria-modal="true" aria-labelledby="pf-modal-title">
+      <div class="modal__box">
+        <div class="modal__head">
+          <h3 class="t-headline-sm" id="pf-modal-title"></h3>
+          <button type="button" class="btn btn--icon" data-close aria-label="Đóng"><span class="icon icon-20">close</span></button>
+        </div>
+        <div class="modal__body" id="pf-modal-body"></div>
+        <div class="modal__foot" id="pf-modal-foot"></div>
+      </div>
+    </div>
+    <input type="file" id="pf-avatar-input" accept="image/*" hidden>
+  </main>
+
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>Đăng ký tài khoản | Nexus Exchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/register.css">
+</head>
+<body data-page="register" data-shell="bare">
+  <main class="reg">
+    <div class="reg__stage">
+      <!-- Ambient glowing orbs -->
+      <div class="reg__orb reg__orb--amber" aria-hidden="true"></div>
+      <div class="reg__orb reg__orb--green" aria-hidden="true"></div>
+
+      <!-- Security protocol banner -->
+      <div class="reg__protocol" id="regProtocol"></div>
+
+      <!-- Registration card -->
+      <section class="reg__card" aria-labelledby="regTitle">
+        <div class="reg__glow" aria-hidden="true"></div>
+
+        <header class="reg__head">
+          <div class="reg__logo">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M16 2L4 8V16C4 23.5 9.1 30.2 16 32C22.9 30.2 28 23.5 28 16V8L16 2Z" fill="currentColor" fill-opacity="0.15"/>
+              <path d="M16 6L7 10.5V16C7 21.8 10.8 27.2 16 28.7C21.2 27.2 25 21.8 25 16V10.5L16 6Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+              <path d="M16 12L20 16L16 20L12 16L16 12Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="reg__title-row">
+            <h1 class="reg__title t-headline-lg" id="regTitle">Tạo tài khoản mới</h1>
+            <span class="reg__badge" id="regBadge"></span>
+          </div>
+          <p class="reg__subtitle t-body-sm">Bắt đầu hành trình đầu tư tài sản số an toàn &amp; bảo mật cùng NEXUS CRYPTO.</p>
+        </header>
+
+        <form class="reg__form" id="registerForm" novalidate>
+          <!-- 1. Full name -->
+          <div class="reg__field" data-field="fullName">
+            <label class="reg__label" for="fullName">
+              <span>Họ và tên người dùng</span>
+              <span class="reg__hint">Họ tên thật theo CCCD/Passport</span>
+            </label>
+            <div class="reg__control">
+              <span class="icon icon-18 reg__lead" aria-hidden="true">badge</span>
+              <input class="input reg__input" id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Nguyễn Văn An" aria-describedby="fullNameError">
+            </div>
+            <p class="field__error hidden" id="fullNameError"></p>
+          </div>
+
+          <!-- 2. Username -->
+          <div class="reg__field" data-field="username">
+            <div class="reg__label">
+              <label for="username">Tên người dùng (Username)</label>
+              <div class="reg__status" id="usernameStatus" aria-live="polite"></div>
+            </div>
+            <div class="reg__control">
+              <span class="icon icon-18 reg__lead" aria-hidden="true">person</span>
+              <input class="input reg__input reg__input--suffix" id="username" name="username" type="text" autocomplete="username" spellcheck="false" placeholder="an_trader99" aria-describedby="usernameError">
+              <span class="reg__suffix" aria-hidden="true">ID DUY NHẤT</span>
+            </div>
+            <p class="field__error hidden" id="usernameError"></p>
+          </div>
+
+          <!-- 3. Password + strength -->
+          <div class="reg__field" data-field="password">
+            <label class="reg__label" for="password">Mật khẩu bảo mật</label>
+            <div class="reg__control">
+              <span class="icon icon-18 reg__lead" aria-hidden="true">lock</span>
+              <input class="input reg__input reg__input--toggle" id="password" name="password" type="password" autocomplete="new-password" placeholder="Tối thiểu 8 ký tự kèm số &amp; ký hiệu" aria-describedby="passwordError strengthLabel">
+              <button class="reg__eye" type="button" data-toggle="password" aria-label="Hiện mật khẩu"><span class="icon icon-18">visibility</span></button>
+            </div>
+            <div class="reg__strength">
+              <div class="reg__strength-row">
+                <span class="c-muted">Độ mạnh mật khẩu:</span>
+                <span class="reg__strength-label" id="strengthLabel" aria-live="polite"></span>
+              </div>
+              <div class="reg__bars" id="strengthBars"><span></span><span></span><span></span><span></span></div>
+              <ul class="reg__rules hidden" id="passwordRules"></ul>
+            </div>
+            <p class="field__error hidden" id="passwordError"></p>
+          </div>
+
+          <!-- 4. Confirm password -->
+          <div class="reg__field" data-field="confirmPassword">
+            <div class="reg__label">
+              <label for="confirmPassword">Nhập lại mật khẩu</label>
+              <span class="reg__status hidden" id="matchStatus" aria-live="polite"></span>
+            </div>
+            <div class="reg__control">
+              <span class="icon icon-18 reg__lead" aria-hidden="true">lock_clock</span>
+              <input class="input reg__input reg__input--toggle" id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" placeholder="Xác nhận lại mật khẩu vừa nhập" aria-describedby="confirmPasswordError">
+              <button class="reg__eye" type="button" data-toggle="confirmPassword" aria-label="Hiện mật khẩu"><span class="icon icon-18">visibility</span></button>
+            </div>
+            <p class="field__error hidden" id="confirmPasswordError"></p>
+          </div>
+
+          <!-- 5. Country -->
+          <div class="reg__field" data-field="country">
+            <span class="reg__label" id="countryLabel">Quốc gia cư trú &amp; Mã vùng</span>
+            <div class="reg__select" id="countrySelect">
+              <button class="reg__select-trigger" id="countryTrigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="countryLabel countryTrigger"></button>
+              <ul class="reg__menu hidden" id="countryMenu" role="listbox" tabindex="-1" aria-labelledby="countryLabel"></ul>
+            </div>
+            <input type="hidden" name="country" id="countryValue">
+          </div>
+
+          <!-- 6. Terms -->
+          <div class="reg__field" data-field="terms">
+            <div class="reg__terms">
+              <label class="reg__check">
+                <input class="sr-only" id="termsCheck" name="terms" type="checkbox" aria-describedby="termsError">
+                <span class="reg__check-box"><span class="icon">check</span></span>
+              </label>
+              <label class="reg__terms-text t-body-sm" for="termsCheck" id="termsText"></label>
+            </div>
+            <p class="field__error hidden" id="termsError"></p>
+          </div>
+
+          <!-- 7. Submit -->
+          <button class="reg__submit" id="submitBtn" type="submit"></button>
+        </form>
+
+        <footer class="reg__switch">
+          <span class="c-muted">Đã có tài khoản giao dịch?</span>
+          <a class="reg__switch-link" id="loginLink" href="#"><span>Đăng nhập ngay</span><span class="icon icon-16" aria-hidden="true">chevron_right</span></a>
+        </footer>
+      </section>
+
+      <!-- Trust badges -->
+      <div class="reg__trust" id="regTrust"></div>
+    </div>
+  </main>
+
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/register.js"></script>
+</body>
+</html>

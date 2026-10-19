@@ -1,0 +1,47 @@
+{
+  "protocol": { "icon": "verified_user", "text": "NEXUS PROTOCOL v4.8 • TIÊU CHUẨN VIP INSTITUTIONAL" },
+  "badge": "VIP Entry",
+  "defaults": { "username": "an_trader99", "country": "VN" },
+  "username": {
+    "minLength": 4,
+    "maxLength": 20,
+    "taken": ["admin", "nexus", "support", "trader", "whale_btc", "satoshi"]
+  },
+  "passwordRules": [
+    { "id": "length", "label": "Tối thiểu 8 ký tự" },
+    { "id": "case", "label": "Chữ hoa & chữ thường" },
+    { "id": "number", "label": "Ít nhất 1 chữ số" },
+    { "id": "symbol", "label": "Ít nhất 1 ký hiệu đặc biệt" }
+  ],
+  "strengthLevels": [
+    { "label": "Chưa nhập", "tone": "empty" },
+    { "label": "Yếu (Weak)", "tone": "weak" },
+    { "label": "Trung bình (Fair)", "tone": "fair" },
+    { "label": "Tốt (Strong)", "tone": "good" },
+    { "label": "Rất mạnh (Optimal)", "tone": "optimal" }
+  ],
+  "countries": [
+    { "iso": "VN", "flag": "🇻🇳", "name": "Việt Nam", "dial": "+84" },
+    { "iso": "US", "flag": "🇺🇸", "name": "United States", "dial": "+1" },
+    { "iso": "DE", "flag": "🇩🇪", "name": "Germany", "dial": "+49" },
+    { "iso": "SG", "flag": "🇸🇬", "name": "Singapore", "dial": "+65" },
+    { "iso": "JP", "flag": "🇯🇵", "name": "Japan", "dial": "+81" },
+    { "iso": "GB", "flag": "🇬🇧", "name": "United Kingdom", "dial": "+44" }
+  ],
+  "terms": [
+    { "label": "Điều khoản dịch vụ", "href": "#" },
+    { "label": "Chính sách bảo mật", "href": "#" }
+  ],
+  "trustBadges": [
+    { "icon": "lock", "tone": "secondary", "text": "Mã hóa 256-bit SSL Cấp Ngân Hàng" },
+    { "icon": "shield", "tone": "primary", "text": "Bảo hiểm Quỹ SAFU 100% Dự Trữ" }
+  ],
+  "submit": {
+    "idle": "Tạo tài khoản VIP",
+    "loading": "Đang khởi tạo tài khoản...",
+    "success": "Đăng ký thành công!",
+    "toast": "Tạo tài khoản thành công! Đang chuyển đến Thị trường...",
+    "processMs": 1200,
+    "redirectMs": 1500
+  }
+}

@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Trang chủ — Thị trường crypto
+   ========================================================================== */
+
+/* Ticker bar */
+.ticker-bar { background: var(--surface-lowest); padding-block: var(--space-sm); }
+.ticker-bar__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-md); }
+.ticker-bar__metrics { display: flex; align-items: center; gap: var(--space-xl); overflow-x: auto; padding-block: 4px; }
+.ticker-bar__item { display: flex; align-items: center; gap: var(--space-xs); flex-shrink: 0; }
+.ticker-bar__label { font-size: 11px; line-height: 14px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--on-surface-variant); }
+.ticker-bar__pill { padding: 0 4px; border-radius: var(--radius-xs); background: var(--surface-high); }
+.ticker-bar__side { display: flex; align-items: center; gap: var(--space-md); }
+.ticker-bar__safu { display: flex; align-items: center; gap: var(--space-xs); padding: 4px var(--space-sm); border-radius: var(--radius-xs); background: rgba(36, 42, 55, 0.8); color: var(--secondary); }
+@media (max-width: 1279px) { .ticker-bar__side { display: none; } }
+
+/* Markets */
+.markets { padding-block: var(--space-md); }
+.markets__head { padding: var(--space-md); display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); box-shadow: var(--shadow-md); }
+.markets__search { width: 16rem; }
+.markets__search .input { height: 32px; font-size: 12px; }
+.markets__table { overflow: hidden; box-shadow: var(--shadow-lg); }
+.filter-btn { display: flex; align-items: center; gap: 4px; padding: 6px var(--space-sm); border-radius: var(--radius-sm); background: var(--surface-container); color: var(--on-surface-variant); font-size: 12px; font-weight: 500; transition: color 0.15s; }
+.filter-btn:hover, .filter-btn.is-active { color: var(--on-surface); }
+.filter-btn.is-active { color: var(--primary); }
+@media (max-width: 767px) {
+  .markets__head { flex-direction: column; align-items: stretch; }
+  .markets__search { width: 100%; }
+}
+
+.pair { display: flex; align-items: center; gap: var(--space-sm); }
+.pair__star { color: var(--on-surface-variant); transition: color 0.15s; }
+.pair__star:hover, .pair__star.is-on { color: var(--primary); }
+.pair__base { font-size: 15px; line-height: 20px; font-weight: 700; transition: color 0.15s; }
+.table tbody tr:hover .pair__base { color: var(--primary); }
+.pair__quote { font-size: 11px; line-height: 14px; font-weight: 500; letter-spacing: 0.04em; color: var(--on-surface-variant); }
+.price-main { font-size: 15px; line-height: 20px; font-weight: 700; border-radius: var(--radius-xs); }
+[data-vnd] { white-space: nowrap; }
+
+.coin.tone-primary { color: var(--primary); }
+.coin.tone-on-surface { color: var(--on-surface); }
+.coin.tone-muted { color: var(--on-surface-variant); }
+.coin.tone-secondary { color: var(--secondary-fixed); }
+
+/* VIP */
+.vip { padding-block: var(--space-xl); background: linear-gradient(to bottom, var(--surface-lowest), var(--surface-low), var(--background)); }
+.vip-banner {
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg);
+  padding: var(--space-xl);
+  border-radius: var(--radius-md);
+  background: var(--surface-container);
+  box-shadow: var(--shadow-xl);
+}
+.vip-banner__glow { position: absolute; width: 16rem; height: 16rem; border-radius: 50%; filter: blur(64px); pointer-events: none; }
+.vip-banner__glow--tl { top: -3rem; left: -3rem; background: rgba(255, 193, 116, 0.1); }
+.vip-banner__glow--br { bottom: -3rem; right: -3rem; background: rgba(245, 158, 11, 0.1); }
+.vip-banner__content { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--space-xs); max-width: 42rem; }
+.vip-banner__title { font-weight: 800; letter-spacing: -0.025em; }
+.vip-banner__actions { position: relative; z-index: 1; display: flex; align-items: center; gap: var(--space-sm); flex-shrink: 0; }
+.vip-banner__current { display: flex; flex-direction: column; padding: var(--space-sm) var(--space-md); border-radius: var(--radius-sm); background: var(--surface-high); }
+@media (max-width: 767px) {
+  .vip-banner { flex-direction: column; align-items: flex-start; padding: var(--space-lg); }
+  .vip-banner__actions { flex-direction: column; align-items: stretch; width: 100%; }
+}
+
+.vip-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-md); }
+@media (max-width: 1023px) { .vip-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 639px) { .vip-grid { grid-template-columns: 1fr; } }
+
+.vip-card {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--surface-container);
+  box-shadow: var(--shadow-md);
+  transition: background 0.2s;
+}
+.vip-card:hover { background: var(--surface-high); }
+.vip-card--current { background: linear-gradient(to bottom, var(--surface-high), var(--surface-container)); box-shadow: var(--shadow-xl); }
+.vip-card--legend { background: linear-gradient(to bottom right, var(--surface-high), var(--surface-container), var(--surface-lowest)); box-shadow: var(--shadow-xl); }
+.vip-card__ribbon { position: absolute; top: 0; right: 0; padding: 4px 12px; border-bottom-left-radius: var(--radius-xs); background: var(--primary); color: var(--on-primary); font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.vip-card__glow { position: absolute; right: -1.5rem; bottom: -1.5rem; width: 8rem; height: 8rem; border-radius: 50%; background: rgba(255, 193, 116, 0.1); filter: blur(24px); pointer-events: none; }
+.vip-card__head { display: flex; align-items: center; justify-content: space-between; padding-bottom: var(--space-sm); }
+.vip-card__level { font-size: 18px; line-height: 24px; font-weight: 800; color: var(--primary); }
+.vip-card__icon { color: var(--on-surface-variant); transition: color 0.15s; }
+.vip-card:hover .vip-card__icon, .vip-card__icon--on { color: var(--primary); }
+.vip-card__req { padding-block: var(--space-xs); }
+.vip-card__amount { font-size: 18px; line-height: 24px; font-weight: 700; }
+.vip-card__bonus { margin-top: var(--space-xs); display: flex; align-items: center; justify-content: space-between; padding: var(--space-sm); border-radius: var(--radius-sm); background: var(--surface-lowest); }
+.vip-card__bonus-value { font-size: 15px; line-height: 20px; font-weight: 700; color: var(--secondary); }
+.vip-card__metric { margin-top: var(--space-sm); }
+.vip-card__metric-row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.vip-card__foot { padding-top: var(--space-md); }
+.vip-card__cta { width: 100%; padding-block: var(--space-sm); font-size: 14px; line-height: 20px; }
+
+/* Trust */
+.trust { padding-block: var(--space-lg); margin-bottom: var(--space-lg); }
+.trust__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-md); }
+@media (max-width: 767px) { .trust__grid { grid-template-columns: 1fr; } }
+.trust__item { display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); border-radius: var(--radius-md); background: var(--surface-low); }

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>Vốn — Nạp / Rút tài sản | Nexus Exchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/wallet.css">
+</head>
+<body data-page="wallet" data-shell="app">
+  <main>
+    <div class="wl-page">
+
+      <!-- 1. Tổng quan tài sản -->
+      <section class="wl-hero" aria-labelledby="wl-total">
+        <div class="wl-hero__glow wl-hero__glow--tr"></div>
+        <div class="wl-hero__glow wl-hero__glow--bl"></div>
+        <div class="wl-hero__inner">
+          <div class="wl-hero__info">
+            <div class="wl-hero__label">
+              <span class="flex items-center" style="gap:4px">
+                <span class="icon icon-16 c-primary">account_balance_wallet</span>
+                <span class="upper wl-wider" id="wl-overview-label">Tổng giá trị tài sản ròng ước tính</span>
+              </span>
+              <button type="button" class="wl-hero__eye" id="wl-toggle-balance" title="Ẩn/Hiện số dư" aria-pressed="false">
+                <span class="icon icon-18" id="wl-eye">visibility</span>
+              </button>
+              <span class="wl-hero__vip" id="wl-vip-tag"></span>
+            </div>
+            <div class="wl-hero__values">
+              <h1 class="wl-hero__total num" id="wl-total"></h1>
+              <span class="t-data c-muted num" id="wl-total-vnd"></span>
+              <span class="wl-hero__delta num" id="wl-delta"></span>
+            </div>
+            <div class="wl-alloc" id="wl-alloc"></div>
+          </div>
+          <div class="wl-hero__actions">
+            <button type="button" class="wl-hero__btn c-primary" data-jump="deposit"><span class="icon icon-18 wl-rotate">south_west</span><span>Nạp tiền</span></button>
+            <button type="button" class="wl-hero__btn wl-hero__btn--primary" data-jump="withdraw"><span class="icon icon-18">north_east</span><span>Rút tiền</span></button>
+            <a class="wl-hero__btn" href="#"><span class="icon icon-18 c-muted">swap_horizontal_circle</span><span>Chuyển ví</span></a>
+            <a class="wl-hero__btn wl-hero__btn--icon" href="history.html" id="wl-history-link" title="Lịch sử giao dịch" aria-label="Lịch sử giao dịch"><span class="icon icon-18">receipt_long</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Trạm Rút (trái) & Nạp (phải) -->
+      <div class="wl-ops">
+        <!-- Rút -->
+        <section class="wl-panel wl-withdraw" id="withdraw" aria-label="Rút tài sản">
+          <div class="wl-stack">
+            <div class="flex items-center justify-between" style="padding-bottom:4px">
+              <div class="wl-seg" id="wl-mode" role="tablist">
+                <button type="button" role="tab" class="wl-seg__btn is-active" data-value="chain">Rút On-Chain / P2P</button>
+                <button type="button" role="tab" class="wl-seg__btn" data-value="bank">Chuyển khoản Ngân hàng</button>
+              </div>
+              <div class="wl-safu hide-xs">
+                <span class="icon c-secondary" style="font-size:14px">verified_user</span>
+                <span>Bảo vệ quỹ SAFU Kép</span>
+              </div>
+            </div>
+
+            <!-- Chế độ On-chain -->
+            <div class="wl-stack" data-mode="chain">
+              <div class="wl-field">
+                <label class="wl-label" for="wl-coin-btn">Chọn Coin / Token rút</label>
+                <div class="wl-coinsel" id="wl-coinsel">
+                  <button type="button" class="wl-coinsel__btn" id="wl-coin-btn" aria-haspopup="listbox" aria-expanded="false"></button>
+                  <div class="wl-coinsel__menu" role="listbox" aria-label="Danh sách coin">
+                    <div class="wl-coinsel__search">
+                      <span class="icon icon-16 c-muted">search</span>
+                      <input type="text" id="wl-coin-search" placeholder="Tìm coin / token..." autocomplete="off">
+                    </div>
+                    <div class="wl-coinsel__list" id="wl-coin-list"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wl-field">
+                <div class="flex items-center justify-between">
+                  <span class="wl-label">Mạng lưới chuyển (Network)</span>
+                  <span class="wl-mini c-primary"><span class="icon" style="font-size:13px">speed</span><span id="wl-eta"></span></span>
+                </div>
+                <div class="wl-nets" id="wl-nets" role="radiogroup" aria-label="Mạng lưới"></div>
+              </div>
+
+              <div class="wl-field">
+                <div class="flex items-center justify-between">
+                  <label class="wl-label" for="wl-address" id="wl-address-label"></label>
+                  <div class="flex items-center gap-sm">
+                    <div class="wl-book" id="wl-book">
+                      <button type="button" class="wl-mini c-primary wl-link" id="wl-book-btn"><span class="icon" style="font-size:13px">menu_book</span>Danh bạ ví</button>
+                      <div class="wl-book__menu" id="wl-book-menu"></div>
+                    </div>
+                    <button type="button" class="wl-mini c-muted wl-hover-text" id="wl-scan"><span class="icon" style="font-size:13px">qr_code_scanner</span>Quét QR</button>
+                  </div>
+                </div>
+                <div class="relative">
+                  <input class="wl-input wl-input--addr" id="wl-address" type="text" autocomplete="off" spellcheck="false">
+                  <button type="button" class="wl-paste" id="wl-paste" title="Dán" aria-label="Dán địa chỉ"><span class="icon icon-18">content_paste</span></button>
+                </div>
+                <p class="wl-error hidden" id="wl-address-err"></p>
+                <div class="wl-field hidden" id="wl-memo-wrap" style="margin-top:6px">
+                  <label class="wl-label" for="wl-memo">Memo / Tag (bắt buộc)</label>
+                  <input class="wl-input" id="wl-memo" type="text" placeholder="Nhập Memo / Tag của ví nhận" autocomplete="off">
+                </div>
+              </div>
+            </div>
+
+            <!-- Chế độ Ngân hàng -->
+            <div class="wl-stack hidden" data-mode="bank">
+              <div class="wl-field">
+                <div class="flex items-center justify-between">
+                  <span class="wl-label">Tài khoản ngân hàng nhận (VNĐ)</span>
+                  <span class="wl-mini c-primary"><span class="icon" style="font-size:13px">speed</span><span id="wl-bank-eta"></span></span>
+                </div>
+                <div class="wl-banks" id="wl-banks" role="radiogroup" aria-label="Tài khoản ngân hàng"></div>
+              </div>
+              <div class="wl-rate" id="wl-bank-rate"></div>
+            </div>
+
+            <!-- Số lượng -->
+            <div class="wl-field">
+              <div class="flex items-center justify-between t-label-sm">
+                <label class="c-muted upper wl-wider" for="wl-amount">Số lượng rút</label>
+                <span class="c-muted">Khả dụng: <span class="c-on-surface fw-600 num" id="wl-avail"></span></span>
+              </div>
+              <div class="relative">
+                <input class="wl-input wl-input--amount num" id="wl-amount" type="number" inputmode="decimal" min="0" step="any">
+                <div class="wl-amount__suffix">
+                  <span class="t-data c-muted" id="wl-amount-unit" style="margin-right:4px"></span>
+                  <button type="button" class="wl-max" id="wl-max">TỐI ĐA</button>
+                </div>
+              </div>
+              <div class="wl-pcts" id="wl-pcts">
+                <button type="button" data-pct="25">25%</button>
+                <button type="button" data-pct="50">50%</button>
+                <button type="button" data-pct="75">75%</button>
+                <button type="button" data-pct="100">100%</button>
+              </div>
+              <p class="wl-error hidden" id="wl-amount-err"></p>
+            </div>
+
+            <!-- Xác thực -->
+            <div class="wl-auth">
+              <div class="flex items-center justify-between">
+                <span class="wl-auth__title"><span class="icon" style="font-size:15px">lock</span>Xác thực bảo mật kép</span>
+                <span class="c-muted" style="font-size:10px" id="wl-limit-left"></span>
+              </div>
+              <div class="wl-auth__grid">
+                <input class="wl-input wl-input--sm num" id="wl-pin" type="password" inputmode="numeric" maxlength="6" placeholder="Mã PIN ví (6 số)" autocomplete="off" aria-label="Mã PIN ví">
+                <input class="wl-input wl-input--sm num" id="wl-2fa" type="text" inputmode="numeric" maxlength="6" placeholder="Mã 2FA Authenticator" autocomplete="one-time-code" aria-label="Mã 2FA">
+              </div>
+              <p class="wl-error hidden" id="wl-auth-err"></p>
+            </div>
+
+            <!-- Tóm tắt -->
+            <div class="wl-summary" id="wl-summary"></div>
+
+            <button type="button" class="wl-submit" id="wl-submit">
+              <span class="icon icon-20">shield</span>
+              <span>Xác nhận Rút tiền an toàn</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Nạp -->
+        <section class="wl-panel wl-deposit" id="deposit" aria-label="Nạp tài sản">
+          <div class="wl-stack">
+            <div class="flex items-center justify-between" style="padding-bottom:4px">
+              <div class="flex items-center gap-sm">
+                <span class="wl-live animate-pulse"></span>
+                <h2 class="t-headline-sm fw-700">Cổng Nạp Nhanh QR</h2>
+              </div>
+              <div class="wl-depnet" id="wl-depnet">
+                <button type="button" class="wl-depnet__btn" id="wl-depnet-btn" aria-haspopup="true" aria-expanded="false"></button>
+                <div class="wl-depnet__menu" id="wl-depnet-menu"></div>
+              </div>
+            </div>
+
+            <div class="wl-qr">
+              <div class="wl-qr__box"><div id="wl-qr"></div></div>
+              <p class="t-label-sm c-muted wl-qr__caption">Quét mã QR bằng ứng dụng ví hoặc sàn giao dịch bất kỳ để nạp nhanh.</p>
+            </div>
+
+            <div class="wl-field">
+              <span class="wl-label" id="wl-dep-label"></span>
+              <div class="flex items-center gap-xs">
+                <div class="wl-depaddr"><span class="truncate num" id="wl-dep-address"></span></div>
+                <button type="button" class="wl-copy" id="wl-copy"><span class="icon icon-16">content_copy</span><span id="wl-copy-text">Sao chép</span></button>
+              </div>
+            </div>
+            <div class="wl-field hidden" id="wl-dep-memo-wrap">
+              <span class="wl-label">Memo / Tag (bắt buộc)</span>
+              <div class="flex items-center gap-xs">
+                <div class="wl-depaddr"><span class="truncate num" id="wl-dep-memo"></span></div>
+                <button type="button" class="wl-copy" id="wl-copy-memo"><span class="icon icon-16">content_copy</span><span>Sao chép</span></button>
+              </div>
+            </div>
+
+            <div class="wl-netinfo" id="wl-netinfo"></div>
+            <div class="wl-warn" id="wl-warn"></div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 3. Bảng số dư -->
+      <section class="wl-panel wl-stack" aria-labelledby="wl-assets-title">
+        <div class="wl-tablehead">
+          <div class="flex items-center gap-md wrap">
+            <h2 class="t-headline-md fw-700" id="wl-assets-title">Số dư Tiền điện tử &amp; Định giá</h2>
+            <div class="wl-chips" id="wl-asset-tabs" role="tablist"></div>
+          </div>
+          <div class="flex items-center gap-md wrap">
+            <label class="wl-check">
+              <input type="checkbox" id="wl-hide-small">
+              <span>Ẩn tài sản &lt; $1 USD</span>
+            </label>
+            <div class="wl-search">
+              <input type="text" id="wl-asset-search" placeholder="Tìm coin / token..." autocomplete="off">
+              <span class="icon icon-16 c-muted">search</span>
+            </div>
+          </div>
+        </div>
+        <div class="wl-scroll">
+          <table class="wl-table wl-table--assets">
+            <thead>
+              <tr>
+                <th>Tài sản (Asset)</th>
+                <th class="text-right">Tổng số dư</th>
+                <th class="text-right">Khả dụng</th>
+                <th class="text-right hide-xs">Đang khóa / Ký quỹ</th>
+                <th class="text-right">Giá trị quy đổi (USD)</th>
+                <th class="text-right">Hành động</th>
+              </tr>
+            </thead>
+            <tbody id="wl-asset-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 4. Lịch sử nạp/rút -->
+      <section class="wl-panel wl-stack" id="history" aria-labelledby="wl-history-title">
+        <div class="flex items-center justify-between gap-md wrap">
+          <div class="flex items-center gap-md wrap">
+            <div class="flex items-center gap-sm">
+              <span class="icon icon-20 c-primary">history</span>
+              <h2 class="t-headline-md fw-700" id="wl-history-title">Lịch sử Giao dịch Nạp / Rút gần đây</h2>
+            </div>
+            <div class="wl-chips" id="wl-history-tabs" role="tablist"></div>
+          </div>
+          <a class="wl-mini c-primary wl-link" href="history.html" id="wl-history-all"><span>Xem toàn bộ nhật ký</span><span class="icon icon-14">chevron_right</span></a>
+        </div>
+        <div class="wl-scroll">
+          <table class="wl-table wl-table--history">
+            <thead>
+              <tr>
+                <th>Loại giao dịch</th>
+                <th>Số lượng</th>
+                <th class="hide-xs">Mã giao dịch (TxID)</th>
+                <th class="hide-sm">Thời gian</th>
+                <th class="text-right">Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody id="wl-history-rows"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- Modal xác nhận rút -->
+    <div class="modal" id="wl-modal" role="dialog" aria-modal="true" aria-labelledby="wl-modal-title">
+      <div class="modal__box">
+        <div class="modal__head">
+          <h3 class="t-headline-sm fw-700 flex items-center gap-sm" id="wl-modal-title"><span class="icon icon-20 c-primary">shield</span>Xác nhận lệnh rút</h3>
+          <button type="button" class="btn--icon btn" data-close aria-label="Đóng"><span class="icon icon-20">close</span></button>
+        </div>
+        <div class="modal__body" id="wl-modal-body"></div>
+        <div class="modal__foot">
+          <button type="button" class="btn btn--ghost btn--md" data-close>Huỷ</button>
+          <button type="button" class="btn btn--primary btn--md" id="wl-modal-ok"><span class="icon icon-18">check</span>Xác nhận rút</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/wallet.js"></script>
+</body>
+</html>

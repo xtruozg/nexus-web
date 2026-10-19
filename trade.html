@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>Giao dịch phái sinh | Nexus Exchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/trade.css">
+</head>
+<body data-page="trade" data-shell="app">
+  <main>
+    <div class="tr">
+      <!-- 1. Ticker: cặp giao dịch, giá, thống kê 24h -->
+      <section class="tr-ticker">
+        <div class="tr-ticker__main">
+          <div class="tr-pair" id="tr-pair">
+            <button type="button" class="tr-pair__btn" id="tr-pair-btn" aria-haspopup="listbox" aria-expanded="false"></button>
+            <div class="tr-pair__menu" id="tr-pair-menu" role="listbox"></div>
+          </div>
+          <div class="tr-mode hide-xs" id="tr-mode-top">
+            <button type="button" class="tr-mode__btn" data-value="spot">Giao ngay</button>
+            <button type="button" class="tr-mode__btn is-active" data-value="futures">Hợp đồng vĩnh cửu</button>
+          </div>
+          <div class="tr-last" id="tr-last"></div>
+        </div>
+        <div class="tr-stats" id="tr-stats"></div>
+      </section>
+
+      <!-- 2. Workspace 3 cột -->
+      <div class="tr-grid">
+        <!-- Biểu đồ nến -->
+        <section class="tr-panel tr-chart">
+          <div class="tr-bar">
+            <div class="tr-chart__tools" id="tr-tf">
+              <span class="tr-chart__brand">NEXUS TV</span>
+              <span class="tr-sep"></span>
+              <div class="tr-chart__tfs" id="tr-tfs"></div>
+              <span class="tr-sep"></span>
+              <button type="button" class="tr-chart__ind" id="tr-ind-btn"><span class="icon icon-15 c-primary">finance_mode</span><span>Chỉ báo</span></button>
+              <div class="tr-chart__inds" id="tr-inds"></div>
+            </div>
+            <div class="flex items-center gap-xs">
+              <button type="button" class="tr-ibtn" id="tr-chart-settings" title="Cài đặt biểu đồ"><span class="icon icon-16">settings</span></button>
+              <button type="button" class="tr-ibtn" id="tr-chart-full" title="Toàn màn hình"><span class="icon icon-16">fullscreen</span></button>
+            </div>
+          </div>
+          <div class="tr-chart__view">
+            <div class="tr-draw" id="tr-draw">
+              <button type="button" class="tr-draw__btn is-active" data-tool="cursor" title="Con trỏ chuột"><span class="icon icon-16">near_me</span></button>
+              <button type="button" class="tr-draw__btn" data-tool="trend" title="Đường xu hướng (Trendline)"><span class="icon icon-16">show_chart</span></button>
+              <button type="button" class="tr-draw__btn" data-tool="fib" title="Fibonacci Retracement"><span class="icon icon-16">stacked_line_chart</span></button>
+              <button type="button" class="tr-draw__btn" data-tool="brush" title="Công cụ cọ vẽ / Vùng chữ nhật"><span class="icon icon-16">brush</span></button>
+              <button type="button" class="tr-draw__btn" data-tool="text" title="Ghi chú văn bản"><span class="icon icon-16">title</span></button>
+              <button type="button" class="tr-draw__btn tr-draw__btn--up" data-tool="long" title="Vị thế Mua / Long"><span class="icon icon-16">arrow_outward</span></button>
+              <button type="button" class="tr-draw__btn tr-draw__btn--down" data-tool="short" title="Vị thế Bán / Short"><span class="icon icon-16">call_received</span></button>
+              <span class="tr-draw__sep"></span>
+              <button type="button" class="tr-draw__btn" data-tool="clear" title="Xóa tất cả hình vẽ"><span class="icon icon-16">delete_sweep</span></button>
+            </div>
+            <div class="tr-plot">
+              <div class="tr-hud" id="tr-hud"></div>
+              <div class="tr-plot__area" id="tr-plot">
+                <svg class="tr-plot__svg" id="tr-svg" aria-label="Biểu đồ nến"></svg>
+                <div id="tr-tags"></div>
+              </div>
+              <div class="tr-axis" id="tr-axis"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sổ lệnh & giao dịch gần đây -->
+        <section class="tr-panel tr-book">
+          <div class="tr-bar">
+            <div class="tr-book__tabs" id="tr-book-tabs">
+              <button type="button" class="tr-book__tab is-active" data-value="book">Sổ lệnh</button>
+              <button type="button" class="tr-book__tab" data-value="trades">Giao dịch gần đây</button>
+            </div>
+            <div class="tr-book__views" id="tr-book-views">
+              <button type="button" class="tr-book__view c-secondary is-active" data-value="both" title="Hiển thị cả hai"><span class="icon icon-16">format_align_justify</span></button>
+              <button type="button" class="tr-book__view c-error" data-value="asks" title="Chỉ lệnh bán"><span class="icon icon-16">format_align_left</span></button>
+              <button type="button" class="tr-book__view c-primary" data-value="bids" title="Chỉ lệnh mua"><span class="icon icon-16">reorder</span></button>
+            </div>
+          </div>
+          <div class="tr-book__body" id="tr-book-body">
+            <div class="tr-book__head" id="tr-book-head"></div>
+            <div class="tr-book__asks" id="tr-asks"></div>
+            <div class="tr-book__spread" id="tr-spread"></div>
+            <div class="tr-book__bids" id="tr-bids"></div>
+          </div>
+          <div class="tr-book__body hidden" id="tr-trades-body">
+            <div class="tr-book__head" id="tr-trades-head"></div>
+            <div class="tr-book__trades" id="tr-trades"></div>
+          </div>
+          <div class="tr-book__foot">
+            <span id="tr-depth-label"></span>
+            <button type="button" class="tr-book__depth" id="tr-depth-btn"></button>
+          </div>
+        </section>
+
+        <!-- Form đặt lệnh -->
+        <section class="tr-panel tr-form" id="tr-form">
+          <div class="tr-form__mode" id="tr-mode">
+            <button type="button" class="tr-form__mode-btn" data-value="spot">Giao ngay (Spot)</button>
+            <button type="button" class="tr-form__mode-btn is-active" data-value="futures">Hợp đồng tương lai</button>
+          </div>
+          <div class="tr-form__pills" data-futures>
+            <button type="button" class="tr-pill" id="tr-margin-btn"></button>
+            <button type="button" class="tr-pill tr-pill--lev" id="tr-lev-btn" aria-expanded="false"></button>
+            <div class="tr-lev" id="tr-lev" role="dialog" aria-label="Điều chỉnh đòn bẩy">
+              <div class="flex items-center justify-between">
+                <span class="t-label-md fw-600">Điều chỉnh đòn bẩy</span>
+                <button type="button" class="tr-ibtn" id="tr-lev-close" aria-label="Đóng"><span class="icon icon-16">close</span></button>
+              </div>
+              <div class="tr-lev__value"><button type="button" class="tr-lev__step" data-step="-1" aria-label="Giảm">−</button><span id="tr-lev-value"></span><button type="button" class="tr-lev__step" data-step="1" aria-label="Tăng">+</button></div>
+              <input type="range" class="range" id="tr-lev-range" min="1" step="1">
+              <div class="tr-lev__marks" id="tr-lev-marks"></div>
+              <p class="tr-lev__note" id="tr-lev-note"></p>
+              <button type="button" class="btn btn--primary btn--block" id="tr-lev-ok">Xác nhận</button>
+            </div>
+          </div>
+          <div class="tr-otype" id="tr-otype">
+            <button type="button" class="tr-otype__btn is-active" data-value="limit">Giới hạn</button>
+            <button type="button" class="tr-otype__btn" data-value="market">Thị trường</button>
+            <button type="button" class="tr-otype__btn" data-value="stop">Kích hoạt (Stop)</button>
+          </div>
+          <div class="tr-avail">
+            <span class="flex items-center" style="gap:4px"><span class="icon icon-15 c-primary">account_balance_wallet</span>Khả dụng:</span>
+            <div class="flex items-center gap-xs tr-avail__val">
+              <span id="tr-avail"></span>
+              <a class="tr-avail__add" id="tr-avail-add" title="Nạp thêm tiền"><span class="icon icon-16">add_circle</span></a>
+            </div>
+          </div>
+          <div class="tr-fld hidden" id="tr-stop-fld">
+            <div class="tr-fld__head"><span>Giá kích hoạt</span><span class="c-muted">Theo giá đánh dấu</span></div>
+            <label class="tr-input"><input type="text" inputmode="decimal" id="tr-stop" placeholder="0.00" autocomplete="off"><span class="tr-input__unit" data-quote></span></label>
+          </div>
+          <div class="tr-fld">
+            <div class="tr-fld__head"><span>Giá đặt lệnh</span><button type="button" class="tr-fld__link" id="tr-last-btn">Giá gần nhất</button></div>
+            <label class="tr-input"><input type="text" inputmode="decimal" id="tr-price" autocomplete="off"><span class="tr-input__unit" data-quote></span></label>
+          </div>
+          <div class="tr-fld">
+            <div class="tr-fld__head"><span>Số lượng</span><span class="num" id="tr-max"></span></div>
+            <label class="tr-input"><input type="text" inputmode="decimal" id="tr-qty" placeholder="0.00" autocomplete="off"><span class="tr-input__unit" data-base></span></label>
+          </div>
+          <div class="tr-pct" id="tr-pct">
+            <button type="button" class="tr-pct__btn" data-value="25">25%</button>
+            <button type="button" class="tr-pct__btn" data-value="50">50%</button>
+            <button type="button" class="tr-pct__btn" data-value="75">75%</button>
+            <button type="button" class="tr-pct__btn" data-value="100">100%</button>
+          </div>
+          <div class="tr-tpsl" data-futures>
+            <label class="tr-tpsl__check"><input type="checkbox" id="tr-tpsl-on"><span>Thiết lập Chốt lời / Cắt lỗ (TP/SL)</span></label>
+            <div class="tr-tpsl__row" id="tr-tpsl-row">
+              <label class="tr-tpsl__in"><span class="c-secondary">TP</span><input type="text" inputmode="decimal" id="tr-tp" placeholder="Giá chốt lời" autocomplete="off"></label>
+              <label class="tr-tpsl__in"><span class="c-error">SL</span><input type="text" inputmode="decimal" id="tr-sl" placeholder="Giá cắt lỗ" autocomplete="off"></label>
+            </div>
+          </div>
+          <div class="tr-sum" id="tr-sum"></div>
+          <div class="tr-actions">
+            <button type="button" class="tr-act tr-act--buy" id="tr-buy"><span data-label></span><span class="tr-act__px" data-px></span></button>
+            <button type="button" class="tr-act tr-act--sell" id="tr-sell"><span data-label></span><span class="tr-act__px" data-px></span></button>
+          </div>
+          <div class="tr-vip" id="tr-vip"></div>
+        </section>
+      </div>
+
+      <!-- 3. Terminal: vị thế, lệnh chờ, lịch sử, tài sản -->
+      <section class="tr-term-wrap">
+        <div class="tr-panel tr-term">
+          <div class="tr-term__bar">
+            <div class="tr-term__tabs" id="tr-term-tabs" role="tablist"></div>
+            <div class="flex items-center gap-sm shrink-0">
+              <button type="button" class="tr-term__bulk" id="tr-bulk"></button>
+              <button type="button" class="tr-ibtn" id="tr-term-tune" title="Cài đặt bảng dữ liệu"><span class="icon icon-16">tune</span></button>
+            </div>
+          </div>
+          <div class="tr-term__table" id="tr-term-table"></div>
+          <div class="tr-term__foot" id="tr-term-foot"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/trade.js"></script>
+</body>
+</html>

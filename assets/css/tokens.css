@@ -1,0 +1,95 @@
+/* ==========================================================================
+   Obsidian Amber — design tokens (nguồn: docs/DESIGN.md)
+   ========================================================================== */
+:root {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --surface: #0d131f;
+  --surface-dim: #0d131f;
+  --surface-bright: #333946;
+  --surface-lowest: #080e1a;
+  --surface-low: #161c28;
+  --surface-container: #1a202c;
+  --surface-high: #242a37;
+  --surface-highest: #2f3542;
+  --surface-variant: #2f3542;
+  --background: #0d131f;
+
+  /* Text */
+  --on-surface: #dde2f3;
+  --on-surface-variant: #d8c3ad;
+  --on-background: #dde2f3;
+  --outline: #a08e7a;
+  --outline-variant: #534434;
+
+  /* Primary — VIP amber */
+  --primary: #ffc174;
+  --on-primary: #472a00;
+  --primary-container: #f59e0b;
+  --on-primary-container: #613b00;
+  --primary-fixed: #ffddb8;
+  --primary-fixed-dim: #ffb95f;
+  --on-primary-fixed: #2a1700;
+
+  /* Secondary — bullish green */
+  --secondary: #4edea3;
+  --on-secondary: #003824;
+  --secondary-container: #00a572;
+  --secondary-fixed: #6ffbbe;
+  --on-secondary-fixed: #002113;
+
+  /* Tertiary / error — bearish red */
+  --tertiary: #ffbcb7;
+  --tertiary-container: #ff938c;
+  --error: #ffb4ab;
+  --on-error: #690005;
+  --error-container: #93000a;
+  --on-error-container: #ffdad6;
+
+  /* Semantic market colors (DESIGN.md) */
+  --bull: #10b981;
+  --bear: #ef4444;
+  --vip: #f59e0b;
+  --vip-hover: #fbbf24;
+  --vip-active: #d97706;
+
+  /* Borders */
+  --border-1: rgba(255, 255, 255, 0.07);
+  --border-2: rgba(255, 255, 255, 0.12);
+  --border-vip: rgba(245, 158, 11, 0.25);
+
+  /* Radius (theo tailwind config của bản thiết kế) */
+  --radius-xs: 0.125rem;  /* rounded      */
+  --radius-sm: 0.25rem;   /* rounded-lg   */
+  --radius-md: 0.5rem;    /* rounded-xl   */
+  --radius-pill: 0.75rem; /* rounded-full */
+  --radius-circle: 9999px;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.75rem;
+  --space-lg: 1rem;
+  --space-xl: 1.5rem;
+  --gutter: 0.5rem;
+  --gutter-desktop: 0.75rem;
+  --margin: 0.75rem;
+  --margin-desktop: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.35), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.35);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.45), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  --shadow-overlay: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-vip: 0 2px 8px rgba(245, 158, 11, 0.25);
+
+  /* Layout */
+  --header-h: 4rem;
+  --mobile-nav-h: 4rem;
+  --container-max: 1600px;
+
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
