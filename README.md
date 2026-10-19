@@ -2,7 +2,9 @@
 
 Dựng lại 6 màn hình thiết kế Stitch (design system **Obsidian Amber**) bằng HTML/CSS/JS thuần, không framework, không build. Dữ liệu lấy từ file mock JSON trong `data/`.
 
-## Chạy
+**Demo:** https://xtruozg.github.io/nexus-web/ (GitHub Pages, tự cập nhật mỗi lần push lên `main`)
+
+## Chạy local
 
 Trình duyệt chặn `fetch()` khi mở file trực tiếp (`file://`), nên cần một server tĩnh:
 
