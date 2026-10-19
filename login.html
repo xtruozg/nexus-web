@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>Đăng nhập | Nexus Exchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/register.css">
+  <link rel="stylesheet" href="assets/css/pages/login.css">
+</head>
+<body data-page="login" data-shell="bare">
+  <main class="reg">
+    <div class="reg__stage">
+      <div class="reg__orb reg__orb--amber" aria-hidden="true"></div>
+      <div class="reg__orb reg__orb--green" aria-hidden="true"></div>
+
+      <div class="reg__protocol" id="lgProtocol"></div>
+
+      <section class="reg__card lg__card" aria-labelledby="lgTitle">
+        <div class="reg__glow" aria-hidden="true"></div>
+
+        <header class="reg__head">
+          <div class="reg__logo">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M16 2L4 8V16C4 23.5 9.1 30.2 16 32C22.9 30.2 28 23.5 28 16V8L16 2Z" fill="currentColor" fill-opacity="0.15"/>
+              <path d="M16 6L7 10.5V16C7 21.8 10.8 27.2 16 28.7C21.2 27.2 25 21.8 25 16V10.5L16 6Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+              <path d="M16 12L20 16L16 20L12 16L16 12Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="reg__title-row">
+            <h1 class="reg__title t-headline-lg" id="lgTitle">Đăng nhập tài khoản</h1>
+            <span class="reg__badge" id="lgBadge"></span>
+          </div>
+          <p class="reg__subtitle t-body-sm" id="lgSubtitle">Chào mừng trở lại sàn giao dịch NEXUS CRYPTO. Vui lòng xác thực để tiếp tục.</p>
+        </header>
+
+        <!-- Bước 1: thông tin đăng nhập -->
+        <form class="reg__form" id="loginForm" novalidate>
+          <div class="seg lg__methods" id="lgMethods" role="tablist" aria-label="Phương thức đăng nhập"></div>
+
+          <!-- Email / username -->
+          <div class="reg__field" data-method="email">
+            <label class="reg__label" for="identifier">
+              <span>Email hoặc Tên người dùng</span>
+              <span class="reg__hint">Đã đăng ký tại NEXUS</span>
+            </label>
+            <div class="reg__control">
+              <span class="icon icon-18 reg__lead" aria-hidden="true">alternate_email</span>
+              <input class="input reg__input" id="identifier" name="identifier" type="text" autocomplete="username" spellcheck="false" placeholder="trader@nexus.finance" aria-describedby="identifierError">
+            </div>
+            <p class="field__error hidden" id="identifierError"></p>
+          </div>
+
+          <!-- Phone -->
+          <div class="reg__field hidden" data-method="phone">
+            <label class="reg__label" for="phone">
+              <span>Số điện thoại</span>
+              <span class="reg__hint">Đã xác minh OTP</span>
+            </label>
+            <div class="lg__phone">
+              <select class="input reg__input select lg__dial" id="dial" aria-label="Mã vùng"></select>
+              <div class="reg__control lg__phone-num">
+                <span class="icon icon-18 reg__lead" aria-hidden="true">smartphone</span>
+                <input class="input reg__input" id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="912 345 678" aria-describedby="phoneError">
+              </div>
+            </div>
+            <p class="field__error hidden" id="phoneError"></p>
+          </div>
+
+          <!-- Password -->
+          <div class="reg__field">
+            <div class="reg__label">
+              <label for="password">Mật khẩu</label>
+              <a class="lg__forgot" id="forgotLink" href="#">Quên mật khẩu?</a>
+            </div>
+            <div class="reg__control">
+              <span class="icon icon-18 reg__lead" aria-hidden="true">lock</span>
+              <input class="input reg__input reg__input--toggle" id="password" name="password" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu bảo mật" aria-describedby="passwordError capsHint">
+              <button class="reg__eye" type="button" data-toggle="password" aria-label="Hiện mật khẩu"><span class="icon icon-18">visibility</span></button>
+            </div>
+            <p class="lg__caps hidden" id="capsHint"><span class="icon icon-14">keyboard_capslock</span>Caps Lock đang bật</p>
+            <p class="field__error hidden" id="passwordError"></p>
+          </div>
+
+          <div class="lg__row">
+            <div class="reg__terms" style="padding-top:0">
+              <label class="reg__check">
+                <input class="sr-only" id="remember" name="remember" type="checkbox">
+                <span class="reg__check-box"><span class="icon">check</span></span>
+              </label>
+              <label class="reg__terms-text t-body-sm" for="remember">Ghi nhớ đăng nhập trên thiết bị này</label>
+            </div>
+            <button type="button" class="lg__demo" id="demoBtn"><span class="icon icon-14">bolt</span>Điền tài khoản demo</button>
+          </div>
+
+          <div class="lg__lock hidden" id="lockBox" role="alert"></div>
+
+          <button class="reg__submit" id="submitBtn" type="submit"></button>
+
+          <div class="lg__divider"><span>hoặc tiếp tục với</span></div>
+          <div class="lg__social" id="lgSocial"></div>
+        </form>
+
+        <!-- Bước 2: xác thực 2FA -->
+        <form class="reg__form hidden" id="otpForm" novalidate>
+          <div class="lg__otp-head">
+            <div class="lg__otp-icon"><span class="icon icon-24">phonelink_lock</span></div>
+            <div>
+              <p class="t-headline-sm">Xác thực 2 lớp (Google Authenticator)</p>
+              <p class="t-body-sm c-muted" id="otpTarget"></p>
+            </div>
+          </div>
+
+          <div class="reg__field">
+            <span class="reg__label"><span>Mã xác thực 6 chữ số</span><span class="reg__hint" id="otpTimer"></span></span>
+            <div class="lg__otp" id="otpBoxes"></div>
+            <p class="field__error hidden" id="otpError"></p>
+          </div>
+
+          <div class="lg__phish" id="phishBox"></div>
+
+          <button class="reg__submit" id="verifyBtn" type="submit"></button>
+
+          <div class="lg__otp-actions">
+            <button type="button" class="lg__link" id="backBtn"><span class="icon icon-16">arrow_back</span>Quay lại</button>
+            <button type="button" class="lg__link" id="resendBtn"></button>
+          </div>
+        </form>
+
+        <footer class="reg__switch">
+          <span class="c-muted">Chưa có tài khoản giao dịch?</span>
+          <a class="reg__switch-link" id="registerLink" href="#"><span>Đăng ký ngay</span><span class="icon icon-16" aria-hidden="true">chevron_right</span></a>
+        </footer>
+      </section>
+
+      <div class="reg__trust" id="lgTrust"></div>
+    </div>
+  </main>
+
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/login.js"></script>
+</body>
+</html>

@@ -19,7 +19,7 @@
     "history": "history.html",
     "profile-settings": "profile.html",
     "register": "register.html",
-    "login": "register.html"
+    "login": "login.html"
   },
   "mainNav": [
     { "key": "markets", "label": "Thị trường" },

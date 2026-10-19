@@ -1,0 +1,98 @@
+/* ==========================================================================
+   Đăng nhập — dùng khung reg__* của register.css, chỉ thêm phần riêng lg__*
+   ========================================================================== */
+.lg__card { max-width: 480px; }
+
+.lg__methods { width: 100%; }
+.lg__methods .seg__btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding-block: 6px; }
+
+.lg__forgot { font-size: 12px; font-weight: 500; color: var(--primary); }
+.lg__forgot:hover { text-decoration: underline; }
+
+.lg__phone { display: flex; gap: var(--space-sm); }
+.lg__dial { width: 92px; flex-shrink: 0; padding-left: var(--space-md); }
+.lg__dial option { background: var(--surface-high); }
+.lg__phone-num { flex: 1; }
+
+.lg__caps { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--primary-container); }
+
+.lg__row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); flex-wrap: wrap; }
+.lg__demo {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px var(--space-sm);
+  border-radius: var(--radius-xs);
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--primary);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+  transition: background 0.15s;
+}
+.lg__demo:hover { background: rgba(245, 158, 11, 0.22); }
+
+.lg__lock {
+  display: flex; align-items: center; gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  background: rgba(147, 0, 10, 0.25);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: var(--on-error-container);
+  font-size: 12px; line-height: 16px;
+}
+.lg__lock .icon { color: var(--error); }
+
+.lg__divider { display: flex; align-items: center; gap: var(--space-md); color: var(--on-surface-variant); font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.lg__divider::before, .lg__divider::after { content: ""; flex: 1; height: 1px; background: var(--border-2); }
+
+.lg__social { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-sm); }
+.lg__social-btn {
+  display: flex; align-items: center; justify-content: center; gap: var(--space-sm);
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px; font-weight: 600;
+  transition: background 0.15s, border-color 0.15s;
+}
+.lg__social-btn:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 193, 116, 0.35); }
+.lg__social-letter { font-size: 16px; font-weight: 800; }
+
+/* Bước 2FA */
+.lg__otp-head { display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); border-radius: var(--radius-sm); background: var(--surface-container); }
+.lg__otp-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); background: rgba(245, 158, 11, 0.12); color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+.lg__otp { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-sm); }
+.lg__otp-box {
+  height: 52px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface-container);
+  color: var(--on-surface);
+  text-align: center;
+  font-size: 22px; font-weight: 700;
+  font-feature-settings: "tnum" 1;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+.lg__otp-box:focus { border-color: var(--vip); background: var(--surface-high); }
+.lg__otp-box.is-filled { border-color: rgba(255, 193, 116, 0.4); }
+.lg__otp.is-invalid .lg__otp-box { border-color: var(--bear); animation: lg-shake 0.35s; }
+@keyframes lg-shake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+
+.lg__phish {
+  display: flex; align-items: center; gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  background: rgba(78, 222, 163, 0.08);
+  border: 1px solid rgba(78, 222, 163, 0.2);
+  font-size: 12px; color: var(--on-surface-variant);
+}
+.lg__phish strong { color: var(--primary); letter-spacing: 0.04em; }
+
+.lg__otp-actions { display: flex; justify-content: space-between; }
+.lg__link { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; color: var(--primary); }
+.lg__link:disabled { color: var(--on-surface-variant); cursor: default; }
+.lg__link:not(:disabled):hover { text-decoration: underline; }
+
+@media (max-width: 639px) {
+  .lg__social-btn span:last-child { display: none; }
+  .lg__otp-box { height: 46px; font-size: 20px; }
+}

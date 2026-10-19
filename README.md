@@ -24,6 +24,9 @@ hoặc `python -m http.server 5500` / `npx serve -l 5500 .` rồi mở http://lo
 | `wallet.html` | Vốn — Nạp / Rút tài sản | `data/wallet.json` |
 | `profile.html` | Trung tâm người dùng | `data/profile.json` |
 | `register.html` | Đăng ký tài khoản | `data/register.json` |
+| `login.html` | Đăng nhập + xác thực 2FA | `data/login.json` |
+
+Tài khoản demo đăng nhập: `trader@nexus.finance` / `Nexus@2024`, mã 2FA `246810` (hoặc bấm "Điền tài khoản demo").
 
 `data/common.json` chứa thông tin dùng chung: user, menu, ngôn ngữ, footer, bảng `routes` ánh xạ key → trang.
 

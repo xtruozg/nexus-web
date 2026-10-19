@@ -1,0 +1,46 @@
+{
+  "protocol": { "icon": "verified_user", "text": "NEXUS PROTOCOL v4.8 • TIÊU CHUẨN VIP INSTITUTIONAL" },
+  "badge": "VIP Access",
+  "demo": {
+    "email": "trader@nexus.finance",
+    "username": "an_trader99",
+    "phone": "912345678",
+    "password": "Nexus@2024",
+    "otp": "246810"
+  },
+  "antiPhishing": "NEX***77",
+  "maxAttempts": 5,
+  "lockSeconds": 30,
+  "otpLength": 6,
+  "otpResendSeconds": 60,
+  "methods": [
+    { "key": "email", "label": "Email / Username", "icon": "alternate_email" },
+    { "key": "phone", "label": "Số điện thoại", "icon": "smartphone" }
+  ],
+  "countries": [
+    { "iso": "VN", "dial": "+84" },
+    { "iso": "US", "dial": "+1" },
+    { "iso": "SG", "dial": "+65" },
+    { "iso": "JP", "dial": "+81" },
+    { "iso": "GB", "dial": "+44" }
+  ],
+  "social": [
+    { "key": "google", "label": "Google", "letter": "G", "color": "#ea4335" },
+    { "key": "apple", "label": "Apple", "icon": "phone_iphone" },
+    { "key": "telegram", "label": "Telegram", "icon": "send", "color": "#29a9eb" }
+  ],
+  "trustBadges": [
+    { "icon": "lock", "tone": "secondary", "text": "Mã hóa 256-bit SSL Cấp Ngân Hàng" },
+    { "icon": "shield", "tone": "primary", "text": "Bảo hiểm Quỹ SAFU 100% Dự Trữ" }
+  ],
+  "submit": {
+    "idle": "Đăng nhập an toàn",
+    "loading": "Đang xác thực...",
+    "verify": "Xác minh & Đăng nhập",
+    "verifying": "Đang kiểm tra mã...",
+    "success": "Đăng nhập thành công!",
+    "toast": "Chào mừng trở lại! Đang chuyển đến Thị trường...",
+    "processMs": 900,
+    "redirectMs": 1200
+  }
+}
